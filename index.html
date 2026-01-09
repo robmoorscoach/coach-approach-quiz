@@ -601,9 +601,14 @@
             <div class="plan" id="plan"></div>
 
             <div class="footer-actions">
-              <a class="link-btn" href="https://robmoors.com/contact-me" target="_blank" rel="noopener">Bring this into coaching</a>
-              <a class="link-btn" href="#app" id="backTop">Back to top</a>
-            </div>
+  <button type="button" class="btn secondary" id="printBottom">Print / Save as PDF</button>
+  <button type="button" class="btn secondary" id="exportBottom">Export Results Data</button>
+
+  <a class="link-btn" href="https://robmoors.com/contact-me" target="_blank" rel="noopener">
+    Bring this into coaching
+  </a>
+  <a class="link-btn" href="#app" id="backTop">Back to top</a>
+</div>
 
             <p class="mini" style="margin-top:10px;">
               Report generated locally in your browser. If you want to keep it, use Print / Save as PDF.
@@ -1476,6 +1481,21 @@
         document.getElementById("app").scrollIntoView({behavior:"smooth"});
       });
     }
+    // Bottom action buttons
+var printBottom = document.getElementById("printBottom");
+if (printBottom) {
+  printBottom.addEventListener("click", function () {
+    window.print();
+  });
+}
+
+var exportBottom = document.getElementById("exportBottom");
+if (exportBottom) {
+  exportBottom.addEventListener("click", function () {
+    var modal = document.getElementById("exportModal");
+    if (modal) modal.style.display = "flex";
+  });
+}
   </script>
 </body>
 </html>
