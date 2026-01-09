@@ -156,3 +156,208 @@ button.primary{
 
 <body>
 <div class="wrap">
+  <div class="header">
+    <div class="brand">
+      <div class="badge">THE COACH APPROACH</div>
+      <h1>Leadership Profile</h1>
+      <p class="lede">
+        A deeper profiling survey built around the four leadership energies in The Coach Approach:
+        <strong>Command</strong>, <strong>Control</strong>, <strong>Clarity</strong> and <strong>Connection</strong>.
+        You’ll receive an on-page report with charts, strengths, watchouts, under-pressure patterns, your Leadership Approach,
+        and a 30-day experiment plan.
+      </p>
+    </div>
+
+    <div class="actions">
+      <button id="btnPrint" class="pill" type="button" disabled>Print / Save as PDF</button>
+      <button id="btnCopy" class="pill" type="button" disabled>Copy summary</button>
+      <button id="btnExport" class="pill" type="button" disabled>Export Results Data</button>
+      <button id="btnContact" class="primary" type="button">Contact Rob</button>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div class="field">
+      <label for="name">Name (optional, used for the report)</label>
+      <input id="name" type="text" placeholder="Your name" />
+    </div>
+
+    <div class="pill">Scale: 1 (Strongly disagree) → 5 (Strongly agree)</div>
+    <div class="pill">40 questions</div>
+    <div class="pill">Instant report</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Your survey</h3>
+      <p class="lede" style="margin-top:0">
+        Answer honestly based on your day-to-day leadership behaviour. If you’re between two scores, choose the one you do more often.
+      </p>
+
+      <div id="questions"></div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <button id="btnGenerate" class="primary" type="button">Generate report</button>
+        <button id="btnReset" type="button">Reset</button>
+        <div id="msg" style="margin-left:auto;color:rgba(219,234,254,.8);font-weight:700"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>What you’ll get</h3>
+      <p class="lede" style="margin-top:0">
+        A <strong style="color:var(--orange)">premium Leadership Profile report</strong> that helps you:
+      </p>
+      <ul style="margin:0;padding-left:18px;line-height:1.6;color:rgba(219,234,254,.9);font-weight:650">
+        <li>Understand your dominant and secondary leadership energies</li>
+        <li>Spot your underused energy (and why it matters)</li>
+        <li>See what you tend to do under pressure</li>
+        <li>Identify your Leadership Approach (Manage, Inspire, Lead, Guide)</li>
+        <li>Get Mindset, Toolset and Skillset guidance</li>
+        <li>Walk away with a 30-day experiment plan</li>
+      </ul>
+
+      <div class="meta" style="margin-top:14px">
+        <div class="lede" style="margin:0">
+          <strong>Reminder:</strong> this is not a label. It’s a mirror.
+          The goal is flexibility: choosing the right energy for the situation, not repeating the same pattern.
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <button id="btnAbout" class="pill" type="button">Talk about The Coach Approach</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="report" style="display:none;margin-top:16px">
+    <!-- Section C will add the full report layout -->
+  </div>
+
+  <style>
+    /* Question UI */
+    .q{
+      margin-top:14px;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid var(--border-soft);
+      background:rgba(255,255,255,.03);
+    }
+    .qTitle{
+      font-weight:900;
+      margin:0 0 10px;
+      letter-spacing:-0.01em;
+    }
+    .likert{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .likert label{
+      cursor:pointer;
+      position:relative;
+    }
+    .likert input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+    .likert span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:70px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      color:var(--ice);
+      font-weight:900;
+    }
+    .likert label.selected span,
+    .likert input:checked + span{
+      border-color: var(--orange);
+      background: rgba(255,122,25,0.18);
+      box-shadow: 0 0 0 2px rgba(255,122,25,0.10) inset;
+    }
+    .hint{
+      margin-top:8px;
+      font-size:12px;
+      font-weight:800;
+      color:rgba(219,234,254,.75);
+    }
+  </style>
+
+  <script>
+    // Links
+    document.getElementById("btnContact").addEventListener("click", function(){
+      window.open("https://robmoors.com/contact-me", "_blank");
+    });
+    document.getElementById("btnAbout").addEventListener("click", function(){
+      window.open("https://robmoors.com/the-coach-approach", "_blank");
+    });
+
+    // Minimal question set placeholder for now (Section C will replace with full 40 + scoring)
+    const QUESTIONS = [
+      { id: "q1", text: "I make decisions quickly when others hesitate." },
+      { id: "q2", text: "I set clear expectations and hold people to them." },
+      { id: "q3", text: "I’m comfortable challenging poor performance directly." },
+      { id: "q4", text: "When pace matters, I step in and take charge." },
+      { id: "q5", text: "I focus on outcomes and deadlines as the priority." }
+    ];
+
+    const qHost = document.getElementById("questions");
+
+    function renderQuestions(){
+      let html = "";
+      QUESTIONS.forEach((q, idx) => {
+        html += `
+          <fieldset class="q" data-q="${q.id}">
+            <legend class="qTitle">${idx+1}. ${q.text}</legend>
+            <div class="likert">
+              ${[1,2,3,4,5].map(v => `
+                <label>
+                  <input type="radio" name="${q.id}" value="${v}">
+                  <span>${v}</span>
+                </label>
+              `).join("")}
+            </div>
+            <div class="hint">1 = Strongly disagree · 5 = Strongly agree</div>
+          </fieldset>
+        `;
+      });
+      qHost.innerHTML = html;
+    }
+
+    renderQuestions();
+
+    // Make selections visibly “stick” (Safari-safe)
+    qHost.addEventListener("change", function(e){
+      const t = e.target;
+      if(!t || t.tagName !== "INPUT" || t.type !== "radio") return;
+
+      const name = t.name;
+      const group = qHost.querySelectorAll('input[name="'+name+'"]');
+      for(let i=0;i<group.length;i++){
+        const lbl = group[i].closest("label");
+        if(lbl) lbl.classList.toggle("selected", group[i].checked);
+      }
+    });
+
+    // Buttons (disabled until Section C wiring)
+    document.getElementById("btnGenerate").addEventListener("click", function(){
+      document.getElementById("msg").textContent = "Next: we’ll add full scoring + report in Section C.";
+    });
+    document.getElementById("btnReset").addEventListener("click", function(){
+      const inputs = qHost.querySelectorAll("input[type=radio]");
+      inputs.forEach(i => i.checked = false);
+      const labels = qHost.querySelectorAll(".likert label");
+      labels.forEach(l => l.classList.remove("selected"));
+      document.getElementById("msg").textContent = "";
+    });
+  </script>
+
+</div>
+</body>
+</html>
