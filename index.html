@@ -284,6 +284,13 @@
       cursor: pointer;
       user-select: none;
       transition: .12s ease;
+
+        /* Fix narrow buttons */
+        min-width: 64px;
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     input[type="radio"]{ display:none; }
@@ -1244,7 +1251,7 @@
   // --------- Radar drawing ----------
   // Order requested: Control and Clarity swapped in the map feel, and keep Command away from Connection.
   // We use: Command (top), Control (right), Connection (bottom), Clarity (left)
-  const RADAR_ORDER = ["command", "control", "connection", "clarity"];
+  const RADAR_ORDER = ["command", "clarity", "connection", "control"];
 
   function drawRadar(pct){
     const canvas = $("radar");
