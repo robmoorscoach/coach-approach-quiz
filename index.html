@@ -848,9 +848,6 @@
       "connection|control": { label:"Guide", focus:"Performance", watch:"Stay here too long and you can build performance systems that lose attachment to the bigger picture.", build:"Re-anchor the ‘why’, vision and meaning behind the work." }
     };
 
-    const BALANCED_SPREAD_MAX = 12;     // percent points
-    const TENSION_SPREAD_MIN  = 18;     // percent points for “opposite” tension callout
-
     // ============================================================
     // Render survey
     // ============================================================
@@ -926,42 +923,57 @@
       const spread = maxPct - minPct;
       const balance = clamp(100 - spread, 0, 100);
 
-      // Leadership Approach label logic
-      const pair = [primary, secondary].sort().join("|");
-      const isBalanced = (spread <= BALANCED_SPREAD_MAX) || (balance >= 80);
+// Leadership Approach label logic
+const pair = [primary, secondary].sort().join("|");
 
-      const oppositePair = (pair === "clarity|control" || pair === "command|connection");
-      let approach = { label:"Blended", focus:"Flex", watch:"", build:"" };
-      let mode = "blended";
+// The 4 real pairs (your “named” approaches)
+const NAMED = {
+  "command|control":   { label: "Manage",  focus: "Results",     pillA: "Manage Results",   pillB: "Command + Control" },
+  "clarity|connection":{ label: "Lead",    focus: "People",      pillA: "Lead People",      pillB: "Clarity + Connection" },
+  "command|clarity":   { label: "Inspire", focus: "Purpose",     pillA: "Inspire Purpose",  pillB: "Command + Clarity" },
+  "connection|control":{ label: "Guide",   focus: "Performance", pillA: "Guide Performance",pillB: "Connection + Control" }
+};
 
-      if(isBalanced){
-        mode = "flexible";
-        approach = {
-          label:"Flexible",
-          focus:"Choice",
-          watch:"A balanced profile usually means range. The watchout is drifting into autopilot because you can do lots of things reasonably well.",
-          build:"Choose the energy the situation needs, rather than the one you prefer in the moment."
-        };
-      } else if(APPROACH_MAP[pair]) {
-        mode = "named";
-        approach = APPROACH_MAP[pair];
-      } else if(oppositePair && spread >= TENSION_SPREAD_MIN) {
-        mode = "tension";
-        approach = {
-          label:"Tension Pair",
-          focus:"Switching",
-          watch:"Your top two energies pull in different directions. This can show up as switching styles quickly, or over-correcting. It can also be a sign of ‘people-pleasing’ answers.",
-          build:"Make your shift visible. Say what you’re doing and why. Keep one steady anchor (purpose or standards) while you flex your style."
-        };
-      } else {
-        mode = "blended";
-        approach = {
-          label:"Blended",
-          focus:"Mix",
-          watch:"Your top two energies don’t map neatly to one named approach. That often means a mixed style or a context-dependent preference.",
-          build:"Use your dominant energy intentionally, then practise your underused one in small moments."
-        };
-      }
+// The only non-pairs possible with 4 energies (your “tension” pairs)
+const isTensionPair = (pair === "command|connection" || pair === "clarity|control");
+
+// Balance threshold (you said 70+ feels right)
+const BALANCE_THRESHOLD = 70;
+
+// Start defaults
+let mode = "named";
+let approach = { label: "Manage", focus: "", watch: "", build: "" };
+
+// If it’s a real pair: named approach
+if (NAMED[pair]) {
+  mode = "named";
+  approach = {
+    label: NAMED[pair].label,
+    focus: NAMED[pair].focus,
+    watch: "",
+    build: ""
+  };
+}
+// Otherwise: Flexible Balance (if balance high), else Tension Pair
+else if (isTensionPair) {
+  if (balance >= BALANCE_THRESHOLD) {
+    mode = "flexible";
+    approach = {
+      label: "Flexible Balance",
+      focus: "Choice",
+      watch: "You can access both ends of the tension. The watchout is drifting into autopilot and losing intentionality.",
+      build: "Name the situation, then choose the energy it needs. Make the switch visible to others."
+    };
+  } else {
+    mode = "tension";
+    approach = {
+      label: "Tension Pair",
+      focus: "Integration",
+      watch: "Your top two energies pull in opposite directions. Under pressure you may over-correct or feel stuck between being ‘too much’ and ‘not enough’.",
+      build: "Treat this as a leadership tension to manage: keep one anchor steady (purpose, standard, boundary) while you flex the other energy intentionally."
+    };
+  }
+}
 
       return {
         pct, sums,
