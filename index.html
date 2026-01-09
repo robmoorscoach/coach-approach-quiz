@@ -1,607 +1,651 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Coach Approach | Leadership Profile</title>
   <style>
     :root{
-      --rm-navy:#071f3a;
-      --rm-navy-2:#0b2a4c;
-      --rm-ice:#eef5ff;
-      --rm-mute:rgba(238,245,255,0.78);
-      --rm-line:rgba(255,255,255,0.10);
-      --rm-line-2:rgba(255,255,255,0.14);
-      --rm-orange:#ff8a00;
-      --rm-orange-2:#ffb000;
-      --rm-shadow: 0 22px 55px rgba(0,0,0,0.35);
-      --rm-radius:22px;
-      --rm-radius-sm:16px;
+      --bg:#071624;
+      --panel:#0b2136;
+      --panel2:#0a1c2d;
+      --stroke:rgba(255,255,255,.10);
+      --stroke2:rgba(255,255,255,.14);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68);
+      --muted2:rgba(255,255,255,.55);
+      --orange:#ff8a00;
+      --orange2:#ffb35c;
+      --ice:rgba(255,255,255,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:14px;
+      --maxw:1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
 
-    /* Kill tiny scrollbars inside embeds */
-    html, body { margin:0; padding:0; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f3f4f6;
-      color: var(--rm-ice);
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(255,138,0,.12), transparent 55%),
+                  radial-gradient(1000px 700px at 80% 20%, rgba(80,160,255,.12), transparent 55%),
+                  linear-gradient(180deg, #071624, #04101b);
+      color:var(--text);
     }
 
+    a{color:inherit}
     .wrap{
-      max-width: 1200px;
-      margin: 28px auto;
-      padding: 0 16px 28px;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:22px 18px 36px;
     }
 
     .card{
-      background: radial-gradient(1200px 800px at 30% -10%, rgba(255,138,0,0.12), transparent 40%),
-                  linear-gradient(180deg, rgba(7,31,58,0.96), rgba(5,22,40,0.96));
-      border: 1px solid var(--rm-line);
-      border-radius: var(--rm-radius);
-      box-shadow: var(--rm-shadow);
-      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--stroke);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 18px 18px 14px;
-      border-bottom: 1px solid var(--rm-line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.00));
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      flex-wrap: wrap;
+    .top{
+      padding:26px 26px 18px;
+      background: linear-gradient(180deg, rgba(11,33,54,.95), rgba(9,27,45,.92));
+      border-bottom:1px solid var(--stroke);
     }
 
     .pill{
       display:inline-flex;
       align-items:center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(255,138,0,0.12);
-      border: 1px solid rgba(255,138,0,0.35);
-      color: var(--rm-orange);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      font-size: 12px;
-      text-transform: uppercase;
-      white-space: nowrap;
+      gap:10px;
+      padding:6px 12px;
+      border-radius:999px;
+      background: rgba(255,138,0,.14);
+      border:1px solid rgba(255,138,0,.25);
+      color: rgba(255,255,255,.92);
+      font-weight:700;
+      letter-spacing:.02em;
+      font-size:12px;
+      text-transform:uppercase;
     }
 
-    .title{
-      font-size: 22px;
-      font-weight: 800;
-      margin: 0;
-      letter-spacing: -0.02em;
+    h1{
+      margin:10px 0 10px;
+      font-size:34px;
+      line-height:1.1;
+      letter-spacing:-.02em;
+    }
+    .lead{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+      max-width: 980px;
     }
 
-    .meta{
-      margin: 6px 0 0;
-      color: var(--rm-mute);
-      font-size: 13px;
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:18px;
     }
+
+    .metaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .metaBox{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      min-width: 320px;
+    }
+
+    .input{
+      width: 280px;
+      max-width: 100%;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline:none;
+    }
+    .input:focus{border-color: rgba(255,138,0,.35); box-shadow: 0 0 0 4px rgba(255,138,0,.12)}
 
     .actions{
       display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
       align-items:center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
-    .btn, .link-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 10px 14px;
+    button{
+      font-family:inherit;
+      cursor:pointer;
+      border:1px solid var(--stroke2);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding:10px 14px;
       border-radius: 999px;
-      border: 1px solid var(--rm-line-2);
-      background: rgba(255,255,255,0.06);
-      color: var(--rm-ice);
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      user-select: none;
-      transition: transform .08s ease, background .18s ease, border-color .18s ease;
-      font-size: 13px;
-      white-space: nowrap;
+      font-weight:650;
+      transition: transform .05s ease, background .15s ease, border-color .15s ease;
     }
-    .btn:hover, .link-btn:hover{
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.20);
+    button:hover{background: rgba(255,255,255,.09)}
+    button:active{transform: translateY(1px)}
+    .btn-orange{
+      background: rgba(255,138,0,.14);
+      border-color: rgba(255,138,0,.35);
     }
-    .btn:active, .link-btn:active{ transform: translateY(1px); }
-
-    .btn.primary{
-      background: rgba(255,138,0,0.16);
-      border-color: rgba(255,138,0,0.45);
-      color: var(--rm-ice);
-    }
-    .btn.primary:hover{
-      background: rgba(255,138,0,0.22);
-      border-color: rgba(255,138,0,0.60);
-    }
-
-    .btn.secondary{
-      background: rgba(255,255,255,0.05);
+    .btn-orange:hover{background: rgba(255,138,0,.18)}
+    .btn-ghost{
+      background: transparent;
+      border-color: var(--stroke2);
     }
 
     .grid{
       display:grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 14px;
-      padding: 16px 18px 18px;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      padding:18px;
     }
-
     @media (max-width: 980px){
-      .grid{ grid-template-columns: 1fr; }
-      .actions{ justify-content:flex-start; }
+      .grid{grid-template-columns:1fr}
+      .actions{justify-content:flex-start}
+      .metaBox{min-width:100%}
     }
 
     .panel{
-      border: 1px solid var(--rm-line);
-      border-radius: var(--rm-radius-sm);
-      background: rgba(255,255,255,0.035);
-      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding:18px;
     }
-
     .panel h2{
-      margin: 0 0 8px;
-      font-size: 18px;
-      letter-spacing: -0.01em;
+      margin:0 0 8px;
+      font-size:18px;
+      letter-spacing:-.01em;
     }
-    .panel p{ margin: 8px 0; color: var(--rm-mute); line-height: 1.45; }
+    .panel p{margin:0; color:var(--muted); line-height:1.55}
 
     .note{
-      border: 1px solid rgba(110,170,255,0.25);
-      background: rgba(80,160,255,0.08);
-      border-radius: 14px;
-      padding: 12px;
-      color: rgba(238,245,255,0.88);
-      margin-top: 12px;
+      margin-top:12px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(120,170,255,.25);
+      background: rgba(120,170,255,.08);
+      color: rgba(255,255,255,.80);
+      line-height:1.45;
     }
 
-    .row{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    label.small{
-      display:block;
-      color: var(--rm-mute);
-      font-size: 12px;
-      font-weight: 650;
-      margin-bottom: 6px;
-    }
-
-    input[type="text"]{
-      width: min(520px, 100%);
-      border-radius: 14px;
-      padding: 10px 12px;
-      border: 1px solid var(--rm-line);
-      background: rgba(0,0,0,0.14);
-      color: var(--rm-ice);
-      outline: none;
-    }
-
-    .scale-pill{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--rm-line);
-      background: rgba(0,0,0,0.12);
-      color: rgba(238,245,255,0.90);
-      font-size: 12.5px;
-      font-weight: 650;
-      white-space: nowrap;
-    }
-
-    .qs{
-      margin-top: 10px;
-      display:flex;
-      flex-direction: column;
-      gap: 12px;
+    .survey{
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.14);
+      margin-top:12px;
     }
 
     .q{
-      border: 1px solid var(--rm-line);
-      border-radius: 18px;
-      padding: 14px;
-      background: rgba(0,0,0,0.10);
+      padding:14px 14px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      margin-bottom:12px;
     }
-
-    .q h3{
-      margin: 0 0 10px;
-      font-size: 15px;
-      letter-spacing: -0.01em;
-      color: rgba(238,245,255,0.95);
-      line-height: 1.35;
+    .qtitle{
+      font-weight:700;
+      margin:0 0 8px;
+      line-height:1.35;
+    }
+    .qsub{
+      margin:0 0 10px;
+      color:var(--muted2);
+      font-size:13px;
     }
 
     .scale{
       display:grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
+      gap:10px;
+      margin-top:8px;
     }
+
+    /* Hide the native radio */
+    .scale input{display:none}
 
     .opt{
-      border-radius: 14px;
-      padding: 10px 0;
-      text-align:center;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-      cursor: pointer;
-      font-weight: 800;
-      color: rgba(238,245,255,0.92);
-      user-select:none;
-      transition: border-color .15s ease, background .15s ease, transform .08s ease;
-    }
-    .opt:hover{
-      border-color: rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.05);
-    }
-    .opt:active{ transform: translateY(1px); }
-
-    .opt.selected{
-      border-color: rgba(255,138,0,0.65);
-      background: rgba(255,138,0,0.16);
-      box-shadow: 0 10px 28px rgba(255,138,0,0.18);
-    }
-
-    .help{
-      font-size: 12px;
-      color: var(--rm-mute);
-      margin-top: 8px;
-    }
-
-    .sticky-foot{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      padding-top: 12px;
-      flex-wrap: wrap;
-    }
-
-    .progress{
-      color: var(--rm-mute);
-      font-size: 13px;
-      font-weight: 650;
-    }
-
-    .warn{
-      color: rgba(255,200,120,0.95);
-      font-weight: 700;
-      font-size: 13px;
-      display:none;
-    }
-
-    .report{
-      display:none;
-      margin-top: 16px;
-      padding: 0 18px 18px;
-    }
-
-    .report-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 980px){
-      .report-grid{ grid-template-columns: 1fr; }
-    }
-
-    .report .panel{ padding: 16px; }
-
-    .kpi{
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .bar{
-      display:grid;
-      grid-template-columns: 120px 1fr 58px;
-      gap: 10px;
-      align-items:center;
-      font-size: 13px;
-      color: rgba(238,245,255,0.92);
-      font-weight: 750;
-    }
-
-    .track{
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow:hidden;
-    }
-    .fill{
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--rm-orange), var(--rm-orange-2));
-      border-radius: 999px;
-    }
-
-    .canvas-wrap{
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 10px 0 0;
+      padding:12px 10px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.16);
+      color: rgba(255,255,255,.90);
+      font-weight:800;
+      user-select:none;
+      transition: background .12s ease, border-color .12s ease, transform .05s ease;
     }
-    canvas{ max-width: 100%; }
-
-    .subtle{
-      color: var(--rm-mute);
-      font-size: 13px;
-      line-height: 1.45;
+    .opt:hover{background: rgba(255,255,255,.06)}
+    .scale input:checked + .opt{
+      background: rgba(255,138,0,.18);
+      border-color: rgba(255,138,0,.55);
+      box-shadow: 0 0 0 4px rgba(255,138,0,.10) inset;
     }
 
-    .twoCol{
+    .warn{
+      display:none;
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,90,90,.28);
+      background: rgba(255,90,90,.10);
+      color: rgba(255,255,255,.88);
+      line-height:1.45;
+    }
+
+    .buildRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+      align-items:center;
+      justify-content:flex-start;
+    }
+
+    .progressRow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:14px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .barOuter{
+      flex:1;
+      height:10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+    .barInner{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(255,138,0,.95), rgba(255,184,90,.85));
+    }
+
+    /* Report */
+    #report{display:none; padding:18px}
+    .reportTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 14px;
+    }
+    .reportTitle{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width: 280px;
+    }
+    .reportTitle strong{font-size:18px}
+    .reportTitle span{color:var(--muted); font-size:13px}
+
+    .reportActions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+
+    .reportGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 10px;
+      gap:14px;
     }
-    @media (max-width: 980px){ .twoCol{ grid-template-columns: 1fr; } }
-
-    ul.clean{
-      margin: 10px 0 0;
-      padding: 0 0 0 18px;
-      color: rgba(238,245,255,0.90);
-      line-height: 1.5;
-    }
-    ul.clean li{ margin: 6px 0; }
-
-    .orange{
-      color: var(--rm-orange);
-      font-weight: 800;
+    @media (max-width: 980px){
+      .reportGrid{grid-template-columns:1fr}
     }
 
-    .hintBox{
-      border: 1px solid rgba(255,138,0,0.20);
-      background: rgba(255,138,0,0.08);
+    .kpi{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .snapLine{
+      color:var(--muted);
+      line-height:1.5;
+      font-size:14px;
+    }
+    .snapLine b{color:rgba(255,255,255,.92)}
+    .mini{color:var(--muted2); font-size:12px; line-height:1.45}
+
+    .energyBars{
+      margin-top:10px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .eRow{
+      display:grid;
+      grid-template-columns: 90px 1fr 52px;
+      gap:10px;
+      align-items:center;
+      font-size:13px;
+      color:rgba(255,255,255,.88);
+    }
+    .eName{font-weight:700; color:rgba(255,255,255,.88)}
+    .ePct{color:rgba(255,255,255,.75); text-align:right; font-weight:700}
+    .eBarOuter{
+      height:10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+    .eBarInner{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(255,138,0,.95), rgba(255,184,90,.80));
+    }
+
+    .chartBox{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    canvas{
+      width:100%;
+      height:260px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+    }
+
+    .subhead{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .sectionTitle{
+      margin:0 0 6px;
+      font-size:16px;
+    }
+
+    ul{margin:10px 0 0 18px; color:rgba(255,255,255,.84)}
+    li{margin:6px 0}
+
+    .callout{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(120,170,255,.22);
+      background: rgba(120,170,255,.07);
+      color:rgba(255,255,255,.82);
+      line-height:1.45;
+    }
+
+    .coachBox{
+      margin-top:10px;
+      padding:12px 14px;
       border-radius: 16px;
-      padding: 12px;
-      margin-top: 12px;
-      color: rgba(238,245,255,0.92);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color: rgba(255,255,255,.86);
+      line-height:1.5;
+      font-size:13px;
     }
-
-    .mini{
-      font-size: 12px;
-      color: var(--rm-mute);
-    }
+    .coachBox b{color:var(--orange); font-weight:850}
 
     .plan{
-      margin-top: 10px;
+      border:1px solid rgba(255,138,0,.26);
+      background: rgba(255,138,0,.06);
       border-radius: 18px;
-      border: 1px solid rgba(255,138,0,0.25);
-      background: rgba(0,0,0,0.10);
-      padding: 14px;
+      padding:14px;
+      margin-top:8px;
     }
-    .plan h4{ margin:0 0 8px; font-size: 15px; }
-    .plan .wk{
-      margin: 8px 0;
-      color: rgba(238,245,255,0.92);
-      line-height: 1.5;
+    .plan h3{
+      margin:0 0 8px;
+      font-size:14px;
+      letter-spacing:.01em;
+      color:rgba(255,255,255,.90);
     }
-    .plan strong{ color: rgba(238,245,255,0.98); }
+    .plan p{margin:8px 0 0; color:rgba(255,255,255,.82)}
+    .plan .mini{margin-top:10px}
 
-    .footer-actions{
+    .footerActions{
       display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-start;
+      margin-top:12px;
     }
 
-    .toast{
-      position: fixed;
-      left: 50%;
-      top: 14px;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.85);
-      color: var(--rm-ice);
-      border: 1px solid rgba(255,255,255,0.16);
-      padding: 10px 12px;
-      border-radius: 12px;
-      z-index: 99999;
-      font-size: 13px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-      display:none;
+    .linkBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--stroke2);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;
+      color:var(--text);
     }
+    .linkBtn:hover{background: rgba(255,255,255,.09)}
 
-    /* Modal */
-    .modal-overlay{
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 9999;
-    }
-    .modal{
-      width: min(820px, 100%);
-      background: rgba(8, 24, 44, 0.98);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px;
-      box-shadow: 0 22px 60px rgba(0,0,0,0.45);
-      padding: 18px;
-    }
-    .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;}
-    .modal textarea{
-      width: 100%;
-      height: 52vh;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.20);
-      color: var(--rm-ice);
-      padding: 12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 12px;
-      line-height: 1.35;
-      resize: vertical;
-    }
-    .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px;flex-wrap:wrap;}
-    .icon-btn{
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.06);
-      color: var(--rm-ice);
-      cursor: pointer;
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    /* Print styling */
-    @media print{
-      body{ background: #fff; }
-      .wrap{ margin: 0; max-width: none; padding: 0; }
-      .card{ border: none; box-shadow: none; border-radius: 0; }
-      .topbar, .grid, .footer-actions, .toast, .modal-overlay{ display:none !important; }
-      .report{ display:block !important; padding: 0 18px 18px; }
-      .panel{ page-break-inside: avoid; }
-    }
+    /* Sticky “tiny scroll” fix: allow natural scroll */
+    body{overflow-y:auto}
   </style>
 </head>
 
 <body>
   <div class="wrap">
     <div class="card" id="app">
-      <div class="topbar">
-        <div>
-          <div class="brand">
-            <span class="pill">THE COACH APPROACH</span>
-            <h1 class="title">Leadership Profile Report</h1>
-          </div>
-          <p class="meta" id="reportMeta">Date: — · Balance score: —</p>
-        </div>
+      <div class="top">
+        <span class="pill">THE COACH APPROACH</span>
+        <h1>Leadership Profile</h1>
+        <p class="lead">
+          A deeper profiling survey built around the four leadership energies in The Coach Approach:
+          <b>Command</b>, <b>Control</b>, <b>Clarity</b> and <b>Connection</b>.
+          You’ll receive an on-page report with charts, strengths, watchouts, under-pressure patterns, your Leadership Approach, and a 30-day experiment plan.
+        </p>
 
-        <div class="actions">
-          <button class="btn secondary" type="button" id="printBtn">Print / Save as PDF</button>
-          <button class="btn secondary" type="button" id="copyBtn">Copy summary</button>
-          <button class="btn secondary" type="button" id="downloadBtn">Export Results Data</button>
-          <a class="link-btn" href="https://robmoors.com/contact-me" target="_blank" rel="noopener">Contact Rob</a>
+        <div class="topbar">
+          <div class="metaBox">
+            <div style="display:flex; flex-direction:column; gap:6px; min-width:260px;">
+              <div class="mini">Name (optional, used for the report)</div>
+              <input class="input" id="name" placeholder="Your name" />
+            </div>
+            <div style="display:flex; flex-direction:column; gap:6px; flex:1; min-width:240px;">
+              <div class="mini">Scale: 1 (Strongly disagree) → 5 (Strongly agree)</div>
+              <div class="metaRow">
+                <span class="pill" style="background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.86)">40 questions</span>
+                <span class="pill" style="background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.86)">Instant report</span>
+                <span class="pill" style="background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.86)">Print / Save as PDF</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn-orange" id="build">Generate report</button>
+            <button class="btn-ghost" id="jumpReport" style="display:none;">Jump to report</button>
+            <a class="linkBtn" href="https://robmoors.com/the-coach-approach" target="_blank" rel="noopener">Talk about The Coach Approach</a>
+          </div>
         </div>
       </div>
 
       <div class="grid">
+        <!-- Survey -->
         <div class="panel">
-          <h2>Your leadership style quiz</h2>
-          <p>Your report is generated locally in your browser.</p>
+          <h2>Your survey</h2>
+          <p>Answer honestly based on your day-to-day leadership behaviour. If you’re between two scores, choose the one you do more often.</p>
 
-          <div class="panel" style="padding:12px; margin-top:12px;">
-            <div class="row">
-              <div style="flex:1; min-width:260px;">
-                <label class="small" for="name">Name (optional, used for the report)</label>
-                <input id="name" type="text" placeholder="Your name" />
-              </div>
-              <div class="scale-pill">Scale: 1 (Strongly disagree) → 5 (Strongly agree)</div>
-              <div class="scale-pill" id="statsPill">40 questions</div>
-              <div class="scale-pill">Instant report</div>
-              <div class="scale-pill">Print / Save as PDF</div>
-            </div>
+          <div class="survey" id="questions"></div>
+
+          <div class="warn" id="warn">
+            Please answer all questions before generating your report.
           </div>
 
-          <div class="qs" id="questions"></div>
+          <div class="progressRow">
+            <span id="progressText">0 / 40 answered</span>
+            <div class="barOuter"><div class="barInner" id="progressBar"></div></div>
+          </div>
 
-          <div class="sticky-foot">
-            <div class="progress" id="progress">Answered: 0 / 40</div>
-            <div class="warn" id="warn">Please answer all questions to generate your report.</div>
-            <button class="btn primary" type="button" id="buildBtn">Generate my report</button>
+          <div class="buildRow">
+            <button class="btn-orange" id="build2">Generate report</button>
+            <button class="btn-ghost" id="reset">Reset answers</button>
           </div>
         </div>
 
+        <!-- What you'll get -->
         <div class="panel">
           <h2>What you’ll get</h2>
-          <p>A clear snapshot of your four leadership energies, an approach label, watchouts, and a practical 30-day experiment plan.</p>
+          <p><b style="color:var(--orange)">A premium Leadership Profile report</b> that helps you:</p>
+          <ul>
+            <li>Understand your dominant and secondary leadership energies</li>
+            <li>Spot your underused energy (and why it matters)</li>
+            <li>See what you tend to do under pressure</li>
+            <li>Identify your Leadership Approach (Manage, Inspire, Lead, Guide)</li>
+            <li>Get Mindset, Toolset and Skillset guidance</li>
+            <li>Walk away with a 30-day experiment plan</li>
+          </ul>
 
           <div class="note">
-            <strong>Note:</strong> This is a leadership style snapshot, not a personality test. Use it to increase awareness and choice.
+            <b>Reminder:</b> this is not a label. It’s a mirror. The goal is flexibility: choosing the right energy for the situation, not repeating the same pattern.
+          </div>
+        </div>
+      </div>
+
+      <!-- Report -->
+      <div id="report">
+        <div class="reportTop">
+          <div class="reportTitle">
+            <strong>Leadership Profile Report</strong>
+            <span id="meta"></span>
           </div>
 
-          <div class="hintBox" style="margin-top:14px;">
-            <div class="subtle"><span class="orange">Tip:</span> If you’re between two scores, choose the one you do more often.</div>
+          <div class="reportActions">
+            <button class="btn-ghost" id="printBtnTop">Print / Save as PDF</button>
+            <button class="btn-ghost" id="copyBtnTop">Copy summary</button>
+            <button class="btn-orange" id="exportBtnTop">Export Results Data</button>
+            <a class="linkBtn" href="https://robmoors.com/contact-me" target="_blank" rel="noopener">Contact Rob</a>
           </div>
+        </div>
 
-      <div class="report" id="report">
-        <div class="report-grid">
-          <div class="panel">
+        <div class="reportGrid">
+          <!-- Snapshot -->
+          <div class="panel kpi">
             <h2>Snapshot</h2>
-            <p id="headline" class="subtle"></p>
-            <div class="kpi" id="bars"></div>
-            <p class="mini" id="balanceNote"></p>
-          </div>
+            <div class="snapLine" id="snapshot"></div>
 
-          <div class="panel">
-            <h2>Your energy map</h2>
-            <div class="canvas-wrap">
-              <canvas id="radar" width="420" height="320"></canvas>
+            <div class="energyBars">
+              <div class="eRow">
+                <div class="eName">Command</div>
+                <div class="eBarOuter"><div class="eBarInner" id="barCommand"></div></div>
+                <div class="ePct" id="pctCommand"></div>
+              </div>
+              <div class="eRow">
+                <div class="eName">Control</div>
+                <div class="eBarOuter"><div class="eBarInner" id="barControl"></div></div>
+                <div class="ePct" id="pctControl"></div>
+              </div>
+              <div class="eRow">
+                <div class="eName">Clarity</div>
+                <div class="eBarOuter"><div class="eBarInner" id="barClarity"></div></div>
+                <div class="ePct" id="pctClarity"></div>
+              </div>
+              <div class="eRow">
+                <div class="eName">Connection</div>
+                <div class="eBarOuter"><div class="eBarInner" id="barConnection"></div></div>
+                <div class="ePct" id="pctConnection"></div>
+              </div>
             </div>
-            <p class="subtle">The radar shows your four energies together. A larger shape suggests stronger preference. A more even shape suggests flexibility across situations.</p>
+
+            <div class="callout" id="balanceNote"></div>
           </div>
 
+          <!-- Chart -->
+          <div class="panel chartBox">
+            <h2>Your energy map</h2>
+            <canvas id="radar" width="600" height="320"></canvas>
+            <p class="subhead">
+              The radar shows your four energies together. A larger shape suggests stronger preference.
+              A more even shape suggests flexibility across situations.
+            </p>
+          </div>
+
+          <!-- At your best -->
           <div class="panel">
             <h2>At your best</h2>
-            <h3 class="orange" id="bestTitle" style="margin:8px 0 0; font-size:14px;"></h3>
-            <ul class="clean" id="bestList"></ul>
+            <p class="subhead" id="bestTitle"></p>
+            <ul id="bestList"></ul>
           </div>
 
+          <!-- Watchouts -->
           <div class="panel">
             <h2>Watchouts</h2>
-            <h3 class="orange" id="watchTitle" style="margin:8px 0 0; font-size:14px;"></h3>
-            <ul class="clean" id="watchList"></ul>
+            <p class="subhead" id="watchTitle"></p>
+            <ul id="watchList"></ul>
           </div>
 
+          <!-- Under pressure -->
           <div class="panel">
             <h2>Under pressure</h2>
-            <p id="pressureText" class="subtle"></p>
-            <div class="note" id="resetNote"></div>
+            <p id="pressureText"></p>
+            <div class="callout" id="resetRoutine"></div>
           </div>
 
+          <!-- Coach guidance -->
           <div class="panel">
             <h2>Your Coach Approach guidance</h2>
-            <p id="coachMove" class="subtle"></p>
-            <div class="panel" style="padding:12px; margin-top:10px;">
-              <p class="subtle" style="margin:0;">
-                <strong class="orange">Mindset:</strong> <span id="mindset"></span><br/>
-                <strong class="orange">Toolset:</strong> <span id="toolset"></span><br/>
-                <strong class="orange">Skillset:</strong> <span id="skillset"></span><br/>
-                <span id="underusedPractice" class="mini"></span>
-              </p>
-            </div>
+            <p class="subhead" id="approachLine"></p>
+
+            <div class="coachBox" id="coachBox"></div>
           </div>
 
-          <div class="panel" style="grid-column: 1 / -1;">
+          <!-- Plan -->
+          <div class="panel" style="grid-column:1 / -1;">
             <h2>30-day experiment plan</h2>
             <div class="plan" id="plan"></div>
 
-            <div class="footer-actions">
-  <button type="button" class="btn secondary" id="printBottom">Print / Save as PDF</button>
-  <button type="button" class="btn secondary" id="exportBottom">Export Results Data</button>
+            <div class="footerActions">
+              <button class="btn-ghost" id="printBtnBottom">Print / Save as PDF</button>
+              <button class="btn-ghost" id="copyBtnBottom">Copy summary</button>
+              <button class="btn-orange" id="exportBtnBottom">Export Results Data</button>
 
-  <a class="link-btn" href="https://robmoors.com/contact-me" target="_blank" rel="noopener">
-    Bring this into coaching
-  </a>
-  <a class="link-btn" href="#app" id="backTop">Back to top</a>
-</div>
+              <a class="linkBtn" href="https://robmoors.com/contact-me" target="_blank" rel="noopener">Bring this into coaching</a>
+              <a class="linkBtn" href="#app" id="backTop">Back to top</a>
+            </div>
 
             <p class="mini" style="margin-top:10px;">
               Report generated locally in your browser. If you want to keep it, use Print / Save as PDF.
@@ -610,395 +654,98 @@
         </div>
       </div>
 
-  <!-- Export modal -->
-  <div id="exportModal" class="modal-overlay" style="display:none;">
-    <div class="modal">
-      <div class="modal-head">
-        <h3>Export Results Data</h3>
-        <button type="button" class="icon-btn" id="exportClose" aria-label="Close">×</button>
-      </div>
-      <p class="muted small">Copy and paste this into Notes, an email, or a document. It’s your results export.</p>
-      <textarea id="exportText" readonly></textarea>
-      <div class="modal-actions">
-        <button type="button" class="btn secondary" id="exportCopy">Copy data</button>
-        <button type="button" class="btn" id="exportDone">Done</button>
-      </div>
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
-
   <script>
-        // Store latest generated results for export
-var LAST_PROFILE = null;
-var LAST_ANSWERS = null;
-        // =========================================================
-    // Data + scoring
-    // =========================================================
+    // ============================================================
+    // Questions (40 total, 10 per energy)
+    // ============================================================
+    const ENERGIES = ["command","control","clarity","connection"];
 
-    var ENERGIES = ["command","control","clarity","connection"];
-
-    // Last generated report (used for export)
-var LAST_PROFILE = null;
-var LAST_ANSWERS = null;
-    
-    var QUESTIONS = [
+    const QUESTIONS = [
       // Command (10)
-      { id: 1,  t: "I’m comfortable making the call when a decision is needed.", e:"command" },
-      { id: 2,  t: "I step in quickly when progress stalls.", e:"command" },
-      { id: 3,  t: "I’m comfortable challenging poor performance directly.", e:"command" },
-      { id: 4,  t: "When pace matters, I step in and take charge.", e:"command" },
-      { id: 5,  t: "I say what needs saying, even if it’s uncomfortable.", e:"command" },
-      { id: 6,  t: "I can hold firm when others disagree.", e:"command" },
-      { id: 7,  t: "I make decisions quickly when others hesitate.", e:"command" },
-      { id: 8,  t: "I’m clear and direct about what needs to happen next.", e:"command" },
-      { id: 9,  t: "I can have difficult conversations without avoiding them.", e:"command" },
-      { id:10,  t: "I take responsibility for making the tough calls.", e:"command" },
+      { id: 1,  e:"command",   t:"I’m comfortable making the call when a decision is needed." },
+      { id: 2,  e:"command",   t:"I step in quickly when progress stalls." },
+      { id: 3,  e:"command",   t:"I’m comfortable challenging poor performance directly." },
+      { id: 4,  e:"command",   t:"When pace matters, I step in and take charge." },
+      { id: 5,  e:"command",   t:"I say what needs saying, even if it’s uncomfortable." },
+      { id: 6,  e:"command",   t:"I can hold firm when others disagree." },
+      { id: 7,  e:"command",   t:"I make decisions quickly when others hesitate." },
+      { id: 8,  e:"command",   t:"I’m clear and direct about what needs to happen next." },
+      { id: 9,  e:"command",   t:"I can have difficult conversations without avoiding them." },
+      { id: 10, e:"command",   t:"I take responsibility for making the tough calls." },
 
       // Control (10)
-      { id:11, t: "I set clear expectations and hold people to them.", e:"control" },
-      { id:12, t: "I focus on outcomes and deadlines as the priority.", e:"control" },
-      { id:13, t: "I like having a clear plan and process.", e:"control" },
-      { id:14, t: "I follow through and make sure actions happen.", e:"control" },
-      { id:15, t: "I bring structure when things feel messy.", e:"control" },
-      { id:16, t: "I prefer clarity on roles, responsibilities and ownership.", e:"control" },
-      { id:17, t: "I track progress and keep work on course.", e:"control" },
-      { id:18, t: "I make work feel manageable by defining the steps.", e:"control" },
-      { id:19, t: "I’m consistent, reliable and organised.", e:"control" },
-      { id:20, t: "I reduce risk by getting the basics right.", e:"control" },
+      { id: 11, e:"control",   t:"I set clear expectations and hold people to them." },
+      { id: 12, e:"control",   t:"I focus on outcomes and deadlines as the priority." },
+      { id: 13, e:"control",   t:"I like having a clear plan and process." },
+      { id: 14, e:"control",   t:"I follow through and make sure actions happen." },
+      { id: 15, e:"control",   t:"I bring structure when things feel messy." },
+      { id: 16, e:"control",   t:"I prefer clarity on roles, responsibilities and ownership." },
+      { id: 17, e:"control",   t:"I track progress and keep work on course." },
+      { id: 18, e:"control",   t:"I make work feel manageable by defining the steps." },
+      { id: 19, e:"control",   t:"I’m consistent, reliable and organised." },
+      { id: 20, e:"control",   t:"I reduce risk by getting the basics right." },
 
       // Clarity (10)
-      { id:21, t: "I help people see the bigger picture and the ‘why’.", e:"clarity" },
-      { id:22, t: "I simplify complexity into clear priorities.", e:"clarity" },
-      { id:23, t: "I’m good at turning ideas into direction.", e:"clarity" },
-      { id:24, t: "I communicate purpose in a way that motivates people.", e:"clarity" },
-      { id:25, t: "I help teams align around what matters most.", e:"clarity" },
-      { id:26, t: "I keep conversations focused on what success looks like.", e:"clarity" },
-      { id:27, t: "I can explain things clearly so people ‘get it’.", e:"clarity" },
-      { id:28, t: "I connect day-to-day work to long-term direction.", e:"clarity" },
-      { id:29, t: "I bring clarity when people feel uncertain.", e:"clarity" },
-      { id:30, t: "I can turn vision into practical direction.", e:"clarity" },
+      { id: 21, e:"clarity",   t:"I help people see the bigger picture and the ‘why’." },
+      { id: 22, e:"clarity",   t:"I simplify complexity into clear priorities." },
+      { id: 23, e:"clarity",   t:"I’m good at turning ideas into direction." },
+      { id: 24, e:"clarity",   t:"I communicate purpose in a way that motivates people." },
+      { id: 25, e:"clarity",   t:"I help teams align around what matters most." },
+      { id: 26, e:"clarity",   t:"I keep conversations focused on what success looks like." },
+      { id: 27, e:"clarity",   t:"I can explain things clearly so people ‘get it’." },
+      { id: 28, e:"clarity",   t:"I’m comfortable naming what’s important and what’s not." },
+      { id: 29, e:"clarity",   t:"I cut through noise and make the next step obvious." },
+      { id: 30, e:"clarity",   t:"I bring direction when people feel unclear." },
 
       // Connection (10)
-      { id:31, t: "I take time to understand what people need.", e:"connection" },
-      { id:32, t: "I’m tuned in to how people are feeling.", e:"connection" },
-      { id:33, t: "I build trust by listening properly.", e:"connection" },
-      { id:34, t: "I bring calm to tense situations.", e:"connection" },
-      { id:35, t: "I’m good at bringing people with me.", e:"connection" },
-      { id:36, t: "I create space for people to speak honestly.", e:"connection" },
-      { id:37, t: "I strengthen relationships as part of getting results.", e:"connection" },
-      { id:38, t: "I notice what’s going unsaid in a room.", e:"connection" },
-      { id:39, t: "I’m comfortable showing human warmth as a leader.", e:"connection" },
-      { id:40, t: "I help people feel valued and seen.", e:"connection" }
+      { id: 31, e:"connection",t:"I notice how people are feeling and take it seriously." },
+      { id: 32, e:"connection",t:"I create space for people to speak honestly." },
+      { id: 33, e:"connection",t:"I build trust by listening properly." },
+      { id: 34, e:"connection",t:"I’m patient with people who need time to think." },
+      { id: 35, e:"connection",t:"I help people feel safe enough to be real." },
+      { id: 36, e:"connection",t:"I adapt my approach depending on who I’m with." },
+      { id: 37, e:"connection",t:"I’m curious about what’s going on underneath the surface." },
+      { id: 38, e:"connection",t:"I build commitment by involving people in the ‘how’." },
+      { id: 39, e:"connection",t:"I look for what people need, not just what they deliver." },
+      { id: 40, e:"connection",t:"I create belonging and connection in teams." },
     ];
 
-    // Thresholds
-    var BALANCE_THRESHOLD = 82;        // out of 100
-    var SPREAD_BALANCED_MAX = 10;      // max difference between top and bottom in % to call "balanced"
-    var OPPOSITE_WARNING_SPREAD = 14;  // if opposite top two and spread large, flag as tension
+    const answers = {}; // id -> 1..5
 
-    // DOM refs
-    var qWrap = document.getElementById("questions");
-    var progressEl = document.getElementById("progress");
-    var warnEl = document.getElementById("warn");
-    var buildBtn = document.getElementById("buildBtn");
-    var report = document.getElementById("report");
-    var headline = document.getElementById("headline");
-    var barsEl = document.getElementById("bars");
-    var balanceNote = document.getElementById("balanceNote");
-    var reportMeta = document.getElementById("reportMeta");
-    var bestTitle = document.getElementById("bestTitle");
-    var bestList = document.getElementById("bestList");
-    var watchTitle = document.getElementById("watchTitle");
-    var watchList = document.getElementById("watchList");
-    var pressureText = document.getElementById("pressureText");
-    var resetNote = document.getElementById("resetNote");
-    var coachMove = document.getElementById("coachMove");
-    var mindset = document.getElementById("mindset");
-    var toolset = document.getElementById("toolset");
-    var skillset = document.getElementById("skillset");
-    var underusedPractice = document.getElementById("underusedPractice");
-    var plan = document.getElementById("plan");
-    var toast = document.getElementById("toast");
-
-    // Top buttons
-    var printBtn = document.getElementById("printBtn");
-    var copyBtn = document.getElementById("copyBtn");
-    var downloadBtn = document.getElementById("downloadBtn");
-
-    // Export modal
-    var exportModal = document.getElementById("exportModal");
-    var exportText = document.getElementById("exportText");
-    var exportClose = document.getElementById("exportClose");
-    var exportCopy = document.getElementById("exportCopy");
-    var exportDone = document.getElementById("exportDone");
-
-    // Answers store
-    var answers = {};
-    var answeredCount = 0;
-
-    function escapeHtml(s){
-      return (s || "").replace(/[&<>"']/g, function(m){
-        return ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" })[m];
-      });
-    }
-
-    function showToast(msg, ok){
-      toast.textContent = msg;
-      toast.style.display = "block";
-      toast.style.borderColor = ok ? "rgba(140,255,190,0.35)" : "rgba(255,170,120,0.35)";
-      toast.style.background = ok ? "rgba(0,0,0,0.85)" : "rgba(0,0,0,0.88)";
-      clearTimeout(showToast._t);
-      showToast._t = setTimeout(function(){ toast.style.display = "none"; }, 2600);
-    }
-    function showOk(msg){ showToast(msg, true); }
-    function showError(msg){ showToast(msg, false); }
-
-    function fmtDate(){
-      try{
-        var d = new Date();
-        return d.toLocaleDateString(undefined, {year:"numeric", month:"2-digit", day:"2-digit"});
-      }catch(e){
-        return (new Date()).toISOString().slice(0,10);
-      }
-    }
-
-    function updateProgress(){
-      answeredCount = Object.keys(answers).length;
-      progressEl.textContent = "Answered: " + answeredCount + " / " + QUESTIONS.length;
-      warnEl.style.display = answeredCount === QUESTIONS.length ? "none" : "none";
-    }
-
-    function makeQuestion(q){
-      var html = '';
-      html += '<div class="q" data-qid="'+q.id+'">';
-      html += '  <h3>'+q.id+'. '+escapeHtml(q.t)+'</h3>';
-      html += '  <div class="scale" role="group" aria-label="Question '+q.id+'">';
-      for(var i=1;i<=5;i++){
-        html += '    <div class="opt" data-val="'+i+'" tabindex="0" role="button" aria-pressed="false">'+i+'</div>';
-      }
-      html += '  </div>';
-      html += '  <div class="help">1 = Strongly disagree · 5 = Strongly agree</div>';
-      html += '</div>';
-      return html;
-    }
-
-    function renderQuestions(){
-      var out = "";
-      for(var i=0;i<QUESTIONS.length;i++){
-        out += makeQuestion(QUESTIONS[i]);
-      }
-      qWrap.innerHTML = out;
-
-      // Wire clicks
-      qWrap.addEventListener("click", function(e){
-        var opt = e.target.closest(".opt");
-        if(!opt) return;
-        var qEl = opt.closest(".q");
-        var qid = qEl.getAttribute("data-qid");
-        setAnswer(qid, parseInt(opt.getAttribute("data-val"),10), qEl);
-      });
-
-      // Keyboard select
-      qWrap.addEventListener("keydown", function(e){
-        if(!(e.key === "Enter" || e.key === " ")) return;
-        var opt = e.target.closest(".opt");
-        if(!opt) return;
-        e.preventDefault();
-        var qEl = opt.closest(".q");
-        var qid = qEl.getAttribute("data-qid");
-        setAnswer(qid, parseInt(opt.getAttribute("data-val"),10), qEl);
-      });
-    }
-
-    function setAnswer(qid, val, qEl){
-      answers[qid] = val;
-
-      // UI
-      var opts = qEl.querySelectorAll(".opt");
-      opts.forEach(function(o){
-        o.classList.remove("selected");
-        o.setAttribute("aria-pressed","false");
-      });
-      var sel = qEl.querySelector('.opt[data-val="'+val+'"]');
-      if(sel){
-        sel.classList.add("selected");
-        sel.setAttribute("aria-pressed","true");
-      }
-
-      updateProgress();
-    }
-
-    function calcScores(){
-      var sums = { command:0, control:0, clarity:0, connection:0 };
-      var counts = { command:0, control:0, clarity:0, connection:0 };
-
-      for(var i=0;i<QUESTIONS.length;i++){
-        var q = QUESTIONS[i];
-        var v = answers[String(q.id)];
-        if(typeof v === "number"){
-          sums[q.e] += v;
-          counts[q.e] += 1;
-        }
-      }
-
-      // Convert to percentage (max 50 per energy)
-      var scores = {};
-      ENERGIES.forEach(function(e){
-        var max = 5 * 10; // 10 questions per energy
-        var pct = max ? Math.round((sums[e] / max) * 100) : 0;
-        scores[e] = pct;
-      });
-
-      var ordered = ENERGIES.slice().sort(function(a,b){ return scores[b] - scores[a]; });
-      var primary = ordered[0];
-      var secondary = ordered[1];
-      var underused = ordered[3];
-
-      var spread = scores[ordered[0]] - scores[ordered[3]];
-      var avg = Math.round((scores.command + scores.control + scores.clarity + scores.connection) / 4);
-
-      // Balance score: closeness to average (higher is more balanced)
-      var diffs = Math.abs(scores.command-avg)+Math.abs(scores.control-avg)+Math.abs(scores.clarity-avg)+Math.abs(scores.connection-avg);
-      var balance = Math.max(0, 100 - Math.round(diffs / 2));
-
-      return {
-        scores: scores,
-        ordered: ordered,
-        primary: primary,
-        secondary: secondary,
-        underused: underused,
-        spread: spread,
-        balance: balance
-      };
-    }
-
-    function niceLabel(e){
-      return ({command:"Command", control:"Control", clarity:"Clarity", connection:"Connection"})[e] || e;
-    }
-
-    function buildHeadline(profile){
-      var dom = niceLabel(profile.primary);
-      var sec = niceLabel(profile.secondary);
-      var und = niceLabel(profile.underused);
-
-      var msg = "Dominant energy: <span class='orange'>"+dom+"</span>. Secondary energy: <span class='orange'>"+sec+"</span>.";
-      msg += " Underused energy: <span class='orange'>"+und+"</span>.";
-      msg += " Your best leadership usually comes from consciously blending your dominant and secondary energies, while intentionally practising the underused one.";
-      return msg;
-    }
-
-    function setBars(scores){
-      var html = "";
-      var order = ["command","control","clarity","connection"];
-      order.forEach(function(k){
-        html += '<div class="bar">';
-        html += '  <div>'+niceLabel(k)+'</div>';
-        html += '  <div class="track"><div class="fill" style="width:'+scores[k]+'%"></div></div>';
-        html += '  <div style="text-align:right;">'+scores[k]+'%</div>';
-        html += '</div>';
-      });
-      barsEl.innerHTML = html;
-    }
-
-    function drawRadar(scores){
-      var c = document.getElementById("radar");
-      if(!c) return;
-      var ctx = c.getContext("2d");
-      var w = c.width, h = c.height;
-      ctx.clearRect(0,0,w,h);
-
-      var cx = w*0.52, cy = h*0.52;
-      var R = Math.min(w,h)*0.34;
-
-      // grid
-      ctx.strokeStyle = "rgba(255,255,255,0.18)";
-      ctx.lineWidth = 1;
-
-      var rings = 4;
-      for(var r=1;r<=rings;r++){
-        var rr = (R/rings)*r;
-        ctx.beginPath();
-        for(var i=0;i<4;i++){
-          var ang = (-Math.PI/2) + i*(Math.PI/2);
-          var x = cx + rr*Math.cos(ang);
-          var y = cy + rr*Math.sin(ang);
-          if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-        }
-        ctx.closePath();
-        ctx.stroke();
-      }
-
-      // axes labels
-      var labels = ["Command","Control","Clarity","Connection"];
-      var keys = ["command","control","clarity","connection"];
-      ctx.fillStyle = "rgba(238,245,255,0.85)";
-      ctx.font = "12px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-      for(var i=0;i<4;i++){
-        var ang = (-Math.PI/2) + i*(Math.PI/2);
-        var lx = cx + (R+22)*Math.cos(ang);
-        var ly = cy + (R+22)*Math.sin(ang);
-        ctx.fillText(labels[i], lx - (i===1?10: (i===3?56:22)), ly + (i===0?-4:4));
-      }
-
-      // polygon
-      function pctToR(p){ return (p/100)*R; }
-
-      var pts = [];
-      for(var i=0;i<4;i++){
-        var ang = (-Math.PI/2) + i*(Math.PI/2);
-        var rr = pctToR(scores[keys[i]]);
-        pts.push([cx + rr*Math.cos(ang), cy + rr*Math.sin(ang)]);
-      }
-
-      // fill
-      ctx.beginPath();
-      pts.forEach(function(p, idx){
-        if(idx===0) ctx.moveTo(p[0],p[1]); else ctx.lineTo(p[0],p[1]);
-      });
-      ctx.closePath();
-      ctx.fillStyle = "rgba(255,138,0,0.20)";
-      ctx.fill();
-
-      // stroke
-      ctx.strokeStyle = "rgba(255,138,0,0.95)";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-    }
-
-    // =========================================================
-    // Content libraries
-    // =========================================================
-    var content = {
+    // ============================================================
+    // Content library (by dominant energy)
+    // ============================================================
+    const CONTENT = {
       command: {
+        bestTitle: "Command at your best",
         best: [
-          "You take decisive action when others stall.",
-          "You address difficult issues directly and quickly.",
-          "You protect standards and raise the bar.",
-          "You create pace and momentum when it matters."
+          "You bring decisiveness when others hesitate.",
+          "You protect standards and address issues quickly.",
+          "You create momentum when the pace slows.",
+          "You help people face reality without drama."
         ],
+        watchTitle: "Command watchouts",
         watch: [
-          "You may come across as blunt or impatient.",
-          "You may jump to action before listening fully.",
-          "You can unintentionally reduce ownership in others.",
-          "You may over-rely on pressure instead of clarity."
+          "You may push too hard and lose people’s buy-in.",
+          "You can become blunt when you’re under pressure.",
+          "You may move so fast others can’t keep up.",
+          "You might assume clarity exists because you feel certain."
         ],
-        pressure: "Under pressure, you may push hard for speed and compliance. That can move things forward, but it can also reduce trust and ownership. Your growth edge is to add Connection and Clarity before you decide your next move.",
-        reset: "Reset routine (60 seconds): Pause. Name the goal. Ask one real question. Then decide your next move.",
-        coach: {
-          move: "Your Coach Approach move: slow down by one breath before you act, and involve others in the next step.",
-          mindset: "Shift from “I need to push this through” to “How do I create ownership and pace together?”",
-          toolset: "Ask: “What do you need from me to move this forward?” then “What will you own by Friday?”",
-          skillset: "Practise clean directness: one message, one ask, one time boundary."
-        }
+        pressure: "Under pressure, you may default to action, urgency and directness. That can be helpful, but it can also feel like intensity to others. Your growth edge is to add Connection and Clarity before you push for the next step.",
+        reset: "Reset routine (60 seconds): Pause. Name the outcome. Ask one real question. Then choose the smallest next action."
       },
       control: {
+        bestTitle: "Control at your best",
         best: [
           "You create stability, reliability and follow-through.",
           "You reduce risk and prevent avoidable rework.",
           "You make work feel manageable through structure.",
           "You help teams stay organised and focused."
         ],
+        watchTitle: "Control watchouts",
         watch: [
           "You may over-structure and reduce autonomy.",
           "You might default to process when the issue is people.",
@@ -1006,501 +753,612 @@ var LAST_ANSWERS = null;
           "You may struggle with ambiguity or experimentation."
         ],
         pressure: "Under pressure, you may tighten structure, process and detail. That can stabilise delivery, but it can also slow decisions and reduce ownership. Your growth edge is to add Clarity and Connection, not just more control.",
-        reset: "Reset routine (60 seconds): Pause. Name what matters. Ask one real question. Then decide your next move.",
-        coach: {
-          move: "Your Coach Approach move: keep the structure, but invite ownership inside it.",
-          mindset: "Shift from “If it’s not controlled, it will fail” to “If it’s clear and trusted, it can flex.”",
-          toolset: "Use a light check-in rhythm: progress, blockers, support, next step. Keep it short and human.",
-          skillset: "Practise small experiments instead of perfect plans."
-        }
+        reset: "Reset routine (60 seconds): Pause. Name what matters. Ask one real question. Then decide your next move."
       },
       clarity: {
+        bestTitle: "Clarity at your best",
         best: [
           "You make purpose and priorities simple.",
           "You cut through noise and name what matters.",
           "You create alignment by communicating the ‘why’.",
           "You help teams turn goals into action."
         ],
+        watchTitle: "Clarity watchouts",
         watch: [
           "You may over-focus on direction and under-focus on emotion.",
           "You can assume understanding when people are overwhelmed.",
           "You might sell the vision but miss the support needed.",
           "You may rush to conclusions without listening fully."
         ],
-        pressure: "Under pressure, you may push hard for direction, priorities and alignment. That can cut through noise, but it can also lead to over-explaining, listening less, and missing what people need emotionally to move forward. Your growth edge is to practise Control when the stakes rise, even if it feels less natural.",
-        reset: "Reset routine (60 seconds): Pause. Name the goal. Ask “What’s in the way?” Then choose the next step.",
-        coach: {
-          move: "Your Coach Approach move: before you clarify, check what they’re hearing and feeling.",
-          mindset: "Shift from “If I explain it well, they’ll follow” to “If I involve them, they’ll own it.”",
-          toolset: "Ask: “What’s most important here?” then “What would success look like in 2 weeks?”",
-          skillset: "Practise concise leadership: one message, one priority, one next step."
-        }
+        pressure: "Under pressure, you may push for direction, priorities and alignment. That can cut through noise. The risk is explaining more, listening less, and missing what people need emotionally to move forward. Your growth edge is to practise Connection and Control when stakes rise.",
+        reset: "Reset routine (60 seconds): Pause. Ask: “What are you hearing and feeling?” Then choose one priority and one next step."
       },
       connection: {
+        bestTitle: "Connection at your best",
         best: [
           "You build trust and psychological safety.",
-          "You create space for honest conversation.",
-          "You strengthen relationships while getting results.",
-          "You sense what’s going unsaid and bring it into the room."
+          "You create space for honesty and real conversation.",
+          "You sense what’s unsaid and bring it into the room.",
+          "You increase commitment by involving people."
         ],
+        watchTitle: "Connection watchouts",
         watch: [
-          "You may avoid directness to keep things comfortable.",
-          "You can over-accommodate and lose boundaries.",
-          "You might carry too much emotional load.",
-          "You may delay decisions while you seek consensus."
+          "You may avoid tension to keep harmony.",
+          "You can over-accommodate and lose direction.",
+          "You may carry others’ emotions as your responsibility.",
+          "You might delay decisions to protect relationships."
         ],
-        pressure: "Under pressure, you may default to harmony and reassurance. That keeps relationships safe, but it can also delay decisions and blur accountability. Your growth edge is to practise Command and Control when stakes rise, without losing your warmth.",
-        reset: "Reset routine (60 seconds): Pause. Name what’s true. Make one clear ask. Then invite response.",
-        coach: {
-          move: "Your Coach Approach move: keep the warmth, but add a clear boundary.",
-          mindset: "Shift from “I don’t want to upset them” to “Clarity is kindness when it’s respectful.”",
-          toolset: "Ask: “What do you need from me?” then “What do I need from you?”",
-          skillset: "Practise clean contracting: expectations, ownership, check-in."
-        }
+        pressure: "Under pressure, you may focus on harmony, reassurance and belonging. That can keep people steady. The risk is drifting, delaying decisions, or holding back what needs to be said. Your growth edge is to add Command and Clarity when it matters.",
+        reset: "Reset routine (60 seconds): Pause. Name the truth kindly. Ask: “What do we need to decide?” Then take one direct step."
       }
     };
 
     // Leadership Approach mapping
-    var approachMap = {
-      "command|control": { label:"Manage", focus:"Results", watch:"If you try to manage everything, it will swallow your time and people won’t follow.", build:"Strengthen Connection and Clarity to keep people with you." },
-      "command|clarity": { label:"Inspire", focus:"Purpose", watch:"If you stay here too long, people can grow impatient for the plan and the process.", build:"Strengthen Control and Connection to turn purpose into delivery." },
-      "clarity|connection": { label:"Lead", focus:"People", watch:"If you dwell here without structure, you may lose grip on results and delivery.", build:"Strengthen Control and Command to protect pace and outcomes." },
-      "connection|control": { label:"Guide", focus:"Performance", watch:"If you stay here without purpose, teams can lose connection to the bigger picture.", build:"Strengthen Clarity and Command to keep direction and standards clear." }
+    const APPROACH_MAP = {
+      "command|control": { label:"Manage", focus:"Results", watch:"If you try to manage everything, it will swallow your time and people won’t truly own the work.", build:"Deliberately invite ownership and decision-making from others." },
+      "command|clarity": { label:"Inspire", focus:"Purpose", watch:"If you live here too long, people grow impatient for the plan, measures and follow-through.", build:"Add structure, roles and simple check-ins." },
+      "clarity|connection": { label:"Lead", focus:"People", watch:"If you dwell here, you may lose grip on results, pace and operational security.", build:"Add standards, priorities and clear ‘done’ definitions." },
+      "connection|control": { label:"Guide", focus:"Performance", watch:"Stay here too long and you can build performance systems that lose attachment to the bigger picture.", build:"Re-anchor the ‘why’, vision and meaning behind the work." }
     };
 
-    function oppositePair(a,b){
-      var s = [a,b].sort().join("|");
-      return (s === "clarity|control" || s === "command|connection");
+    const BALANCED_SPREAD_MAX = 12;     // percent points
+    const TENSION_SPREAD_MIN  = 18;     // percent points for “opposite” tension callout
+
+    // ============================================================
+    // Render survey
+    // ============================================================
+    const qWrap = document.getElementById("questions");
+    function renderQuestions(){
+      qWrap.innerHTML = "";
+      QUESTIONS.forEach((q, idx) => {
+        const div = document.createElement("div");
+        div.className = "q";
+        div.innerHTML = `
+          <p class="qtitle">${idx+1}. ${escapeHtml(q.t)}</p>
+          <p class="qsub">Choose one option</p>
+          <div class="scale">
+            ${[1,2,3,4,5].map(v => `
+              <label>
+                <input type="radio" name="q${q.id}" value="${v}" />
+                <div class="opt">${v}</div>
+              </label>
+            `).join("")}
+          </div>
+          <div class="mini" style="margin-top:8px;">1 = Strongly disagree · 5 = Strongly agree</div>
+        `;
+        qWrap.appendChild(div);
+
+        // Wire radios
+        div.querySelectorAll(`input[name="q${q.id}"]`).forEach(inp => {
+          inp.addEventListener("change", () => {
+            answers[q.id] = Number(inp.value);
+            updateProgress();
+          });
+        });
+      });
     }
 
-    function setLeadershipApproach(profile){
-      // This block is surfaced in the Snapshot headline (kept simple there),
-      // and more detailed in the Coach Approach guidance panel.
-      // Defaults
-      return buildApproachBlock(profile);
+    function updateProgress(){
+      const answered = Object.keys(answers).length;
+      const total = QUESTIONS.length;
+      document.getElementById("progressText").textContent = `${answered} / ${total} answered`;
+      document.getElementById("progressBar").style.width = `${Math.round((answered/total)*100)}%`;
     }
 
-    function buildApproachBlock(profile){
-      // Flexible rules
-      if(profile.balance >= BALANCE_THRESHOLD || profile.spread <= SPREAD_BALANCED_MAX){
-        return {
-          title: "Leadership Approach: Flexible",
-          desc: "Your results suggest you can access multiple approaches rather than living in one. Your edge is choosing the right energy more consciously, rather than automatically.",
-          hint: "Coach tip: in your next real leadership moment, ask “What does this situation need?” before you act."
+    // ============================================================
+    // Scoring + profile logic
+    // ============================================================
+    function calcProfile(){
+      const sums = { command:0, control:0, clarity:0, connection:0 };
+      const counts = { command:0, control:0, clarity:0, connection:0 };
+
+      QUESTIONS.forEach(q => {
+        const v = answers[q.id] || 0;
+        sums[q.e] += v;
+        counts[q.e] += 1;
+      });
+
+      // Total possible per energy: 10..50
+      const pct = {};
+      ENERGIES.forEach(e => {
+        const min = counts[e]*1;
+        const max = counts[e]*5;
+        const raw = sums[e];
+        const p = ((raw - min) / (max - min)) * 100; // 0..100
+        pct[e] = Math.round(p);
+      });
+
+      // Ranking
+      const ranked = [...ENERGIES].sort((a,b) => pct[b]-pct[a]);
+      const primary = ranked[0];
+      const secondary = ranked[1];
+      const underused = ranked[3];
+
+      const maxPct = pct[ranked[0]];
+      const minPct = pct[ranked[3]];
+      const spread = maxPct - minPct;
+      const balance = clamp(100 - spread, 0, 100);
+
+      // Leadership Approach label logic
+      const pair = [primary, secondary].sort().join("|");
+      const isBalanced = (spread <= BALANCED_SPREAD_MAX) || (balance >= 80);
+
+      const oppositePair = (pair === "clarity|control" || pair === "command|connection");
+      let approach = { label:"Blended", focus:"Flex", watch:"", build:"" };
+      let mode = "blended";
+
+      if(isBalanced){
+        mode = "flexible";
+        approach = {
+          label:"Flexible",
+          focus:"Choice",
+          watch:"A balanced profile usually means range. The watchout is drifting into autopilot because you can do lots of things reasonably well.",
+          build:"Choose the energy the situation needs, rather than the one you prefer in the moment."
+        };
+      } else if(APPROACH_MAP[pair]) {
+        mode = "named";
+        approach = APPROACH_MAP[pair];
+      } else if(oppositePair && spread >= TENSION_SPREAD_MIN) {
+        mode = "tension";
+        approach = {
+          label:"Tension Pair",
+          focus:"Switching",
+          watch:"Your top two energies pull in different directions. This can show up as switching styles quickly, or over-correcting. It can also be a sign of ‘people-pleasing’ answers.",
+          build:"Make your shift visible. Say what you’re doing and why. Keep one steady anchor (purpose or standards) while you flex your style."
+        };
+      } else {
+        mode = "blended";
+        approach = {
+          label:"Blended",
+          focus:"Mix",
+          watch:"Your top two energies don’t map neatly to one named approach. That often means a mixed style or a context-dependent preference.",
+          build:"Use your dominant energy intentionally, then practise your underused one in small moments."
         };
       }
 
-      // Named adjacent approach
-      var key = [profile.primary, profile.secondary].sort().join("|");
-      if(approachMap[key]){
-        var ap = approachMap[key];
-        return {
-          title: "Leadership Approach: " + ap.label + " ("+ap.focus+")",
-          desc: "You naturally lean towards <strong>"+ap.label+"</strong> leadership, with a focus on <strong>"+ap.focus+"</strong>. Watchout: " + ap.watch,
-          hint: "To strengthen this: " + ap.build
-        };
-      }
-
-      // Opposite top two + meaningful spread => tension pair
-      if(oppositePair(profile.primary, profile.secondary) && profile.spread >= OPPOSITE_WARNING_SPREAD){
-        return {
-          title: "Leadership Approach: Tension pair",
-          desc: "Your top two energies pull in different directions. This can show up as switching styles quickly (or second-guessing yourself). If your results feel ‘too tidy’, you may have been people-pleasing with answers.",
-          hint: "Coach tip: make the shift visible. Say what you’re doing and why. Example: “I’m going to be warm first, then I’ll be direct about what we need to do.”"
-        };
-      }
-
-      // Fallback: no label, neutral narrative
       return {
-        title: "Leadership Approach: Blended",
-        desc: "Your top two energies don’t match a single named approach. That can be healthy flexibility, or it can be a sign you’re adapting fast between different demands.",
-        hint: "Coach tip: pick one real situation this week and practise your underused energy on purpose."
+        pct, sums,
+        ranked,
+        primary, secondary, underused,
+        spread, balance,
+        approach, mode
       };
     }
-        // =========================================================
-    // Report building
-    // =========================================================
 
-    function buildExportObject(profile, answersObj){
+    // ============================================================
+    // Report rendering
+    // ============================================================
+    function renderReport(profile){
+      // Meta
+      const name = (document.getElementById("name").value || "").trim();
+      const date = new Date().toLocaleDateString("en-GB");
+      const bal = profile.balance;
+
+      document.getElementById("meta").textContent =
+        `${name ? name + " · " : ""}Date: ${date} · Balance score: ${bal}/100`;
+
+      // Snapshot text
+      const nice = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+      const snap = `
+        <b>Dominant energy:</b> ${nice(profile.primary)}. <b>Secondary energy:</b> ${nice(profile.secondary)}.<br>
+        <b>Underused energy:</b> ${nice(profile.underused)}.<br>
+        <b>Leadership Approach:</b> ${profile.approach.label} ${profile.mode==="named" ? `(${profile.approach.focus})` : ""}.
+      `;
+      document.getElementById("snapshot").innerHTML = snap;
+
+      // Bars
+      setBar("Command", profile.pct.command);
+      setBar("Control", profile.pct.control);
+      setBar("Clarity", profile.pct.clarity);
+      setBar("Connection", profile.pct.connection);
+
+      // Balance note
+      const balanceNote = document.getElementById("balanceNote");
+      if(profile.mode === "flexible"){
+        balanceNote.innerHTML = `<b>Balance note:</b> your energies are relatively even. That usually means flexibility. Your next step is to choose the right energy more consciously, rather than automatically.`;
+      } else if(profile.mode === "tension"){
+        balanceNote.innerHTML = `<b>Balance note:</b> your top energies pull in different directions. If that feels true, treat it as a signal to slow down, name the shift, and choose one clear anchor (purpose or standards).`;
+      } else {
+        balanceNote.innerHTML = `<b>Balance note:</b> your preferences are clearer. Your best leadership usually comes from blending your dominant and secondary energies, while intentionally practising your underused one.`;
+      }
+
+      // Energy-specific content
+      const c = CONTENT[profile.primary];
+      document.getElementById("bestTitle").textContent = c.bestTitle;
+      renderList("bestList", c.best);
+
+      document.getElementById("watchTitle").textContent = c.watchTitle;
+      renderList("watchList", c.watch);
+
+      document.getElementById("pressureText").textContent = c.pressure;
+      document.getElementById("resetRoutine").innerHTML = `<b>${escapeHtml(c.reset.split(":")[0])}:</b> ${escapeHtml(c.reset.split(":").slice(1).join(":").trim())}`;
+
+      // Leadership Approach line + Coach guidance box
+      const approachLine = document.getElementById("approachLine");
+      if(profile.mode === "named"){
+        approachLine.textContent = `Leadership Approach: ${profile.approach.label} ${profile.approach.focus ? "· Focus: " + profile.approach.focus : ""}.`;
+      } else {
+        approachLine.textContent = `Leadership Approach: ${profile.approach.label}.`;
+      }
+
+      const coachBox = document.getElementById("coachBox");
+      const under = nice(profile.underused);
+
+      const guidance = buildGuidance(profile);
+      coachBox.innerHTML = `
+        <div><b>Mindset:</b> ${escapeHtml(guidance.mindset)}</div>
+        <div><b>Toolset:</b> ${escapeHtml(guidance.toolset)}</div>
+        <div><b>Skillset:</b> ${escapeHtml(guidance.skillset)}</div>
+        <div style="margin-top:8px;"><span class="mini"><b>Underused energy practice:</b> ${escapeHtml(guidance.practice.replace("{UNDER}", under))}</span></div>
+        <div style="margin-top:10px;" class="mini"><b>Watchout:</b> ${escapeHtml(profile.approach.watch)}</div>
+        <div class="mini" style="margin-top:6px;"><b>Build this by:</b> ${escapeHtml(profile.approach.build)}</div>
+      `;
+
+      // 30-day plan
+      document.getElementById("plan").innerHTML = buildPlan(profile);
+
+      // Radar
+      drawRadar(profile.pct);
+
+      // Show report
+      document.getElementById("report").style.display = "block";
+      document.getElementById("jumpReport").style.display = "inline-block";
+
+      // Scroll
+      document.getElementById("report").scrollIntoView({behavior:"smooth"});
+
+      // Save for export
+      LAST_PROFILE = profile;
+      LAST_EXPORT = buildExport(profile, name, date);
+
+      // Wire report buttons
+      wireReportButtons();
+    }
+
+    function buildGuidance(profile){
+      // Core guidance based on approach label + underused
+      if(profile.mode === "named"){
+        switch(profile.approach.label){
+          case "Manage":
+            return {
+              mindset: "Shift from “If I control it, it will work” to “If I involve them, they’ll own it.”",
+              toolset: "Use a light rhythm: priorities, progress, blockers, next step. Keep it short and consistent.",
+              skillset: "Hold standards with calm clarity: one clear ask, one deadline, one measure.",
+              practice: "Build {UNDER} with one small behaviour change this week. Ask one coaching question before you direct."
+            };
+          case "Inspire":
+            return {
+              mindset: "Shift from “If I explain it well, they’ll follow” to “If we co-create it, they’ll commit.”",
+              toolset: "Ask: “What does success look like in 2 weeks?” then agree 1–2 measures and a check-in date.",
+              skillset: "Inspire, then land it: translate purpose into priorities and next steps.",
+              practice: "Build {UNDER} by adding one practical structure: roles, measures, or a simple check-in rhythm."
+            };
+          case "Lead":
+            return {
+              mindset: "Shift from “People will follow if they feel safe” to “People follow when safety and direction exist together.”",
+              toolset: "Use: “What matters most?” then “What will we stop doing?” to protect focus.",
+              skillset: "Create alignment: clear purpose, honest conversation, shared priorities.",
+              practice: "Build {UNDER} by setting one firm boundary: a decision, a standard, or a clear ‘done’ definition."
+            };
+          case "Guide":
+            return {
+              mindset: "Shift from “Keep it steady” to “Keep it steady while we raise the bar.”",
+              toolset: "Use a performance check-in: what’s working, what’s stuck, what support is needed, what’s next.",
+              skillset: "Guide with precision: supportive challenge, clear measures, visible follow-through.",
+              practice: "Build {UNDER} by re-anchoring the ‘why’: name purpose, meaning, and the bigger picture once this week."
+            };
+        }
+      }
+
+      if(profile.mode === "tension"){
+        return {
+          mindset: "Shift from “I have to get it right for everyone” to “I can choose one clear anchor, then flex.”",
+          toolset: "Name the switch: “I’m going to be direct for 2 minutes, then I’ll come back to questions.”",
+          skillset: "Practise visible transitions: signal intent, then act.",
+          practice: "Build {UNDER} with one small habit: pause, ask one real question, then decide the next step."
+        };
+      }
+
+      // Flexible / Blended
+      return {
+        mindset: "Shift from “I’ll use what’s natural” to “I’ll choose what this moment needs.”",
+        toolset: "Ask: “What’s most important here?” then “What would good look like by Friday?”",
+        skillset: "Practise concise leadership: one message, one priority, one next step.",
+        practice: "Build {UNDER} with one small behaviour change this week. You don’t need a personality transplant. You need a practical habit."
+      };
+    }
+
+    function buildPlan(profile){
+      const p = profile.primary;
+      const under = titleCase(profile.underused);
+
+      // Small, practical week-by-week. Slightly adapt based on dominant.
+      const week1 = (p==="command") ? "Choose one situation where you’ll slow down and ask one question before you act."
+                  : (p==="control") ? "Choose one situation where you’ll invite ownership instead of adding structure yourself."
+                  : (p==="clarity") ? "Choose one situation where you’ll check emotion before you explain the plan."
+                  : "Choose one situation where you’ll be more direct and name the decision needed.";
+
+      const week2 = "Write one simple behaviour you will repeat twice this week. Example: one extra question, one clear measure, one direct request, one short check-in.";
+      const week3 = "Ask for feedback from one person: “What did you notice about my style this week? What helped? What didn’t?”";
+      const week4 = `Blend your dominant energy with your underused (${under}): choose one real leadership moment and deliberately do both. Lead with your strength, then add the missing energy.`;
+
+      const reflect = "Reflection: Where did I lead with intention this week, and where did I default under pressure?";
+      const tip = "Keep it small. One behaviour. One situation. One week. Consistency beats intensity.";
+
+      return `
+        <h3>Week-by-week</h3>
+        <ul>
+          <li><b>Week 1:</b> ${escapeHtml(week1)}</li>
+          <li><b>Week 2:</b> ${escapeHtml(week2)}</li>
+          <li><b>Week 3:</b> ${escapeHtml(week3)}</li>
+          <li><b>Week 4:</b> ${escapeHtml(week4)}</li>
+        </ul>
+        <p class="mini" style="margin-top:10px;"><b>Weekly reflection question:</b> ${escapeHtml(reflect)}</p>
+        <p class="mini"><b>Coach Approach tip:</b> ${escapeHtml(tip)}</p>
+      `;
+    }
+
+    // ============================================================
+    // Radar chart
+    // ============================================================
+    function drawRadar(pct){
+      const canvas = document.getElementById("radar");
+      const ctx = canvas.getContext("2d");
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0,0,w,h);
+
+      // Scale with padding
+      const cx = w/2, cy = h/2;
+      const r = Math.min(w,h)*0.34;
+
+      // Grid
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = "rgba(255,255,255,.14)";
+      ctx.fillStyle = "rgba(255,255,255,.10)";
+
+      const rings = 4;
+      for(let i=1;i<=rings;i++){
+        const rr = (r*i)/rings;
+        polygon(ctx, cx, cy, rr, 4, -Math.PI/2, false);
+      }
+
+      // Axes labels
+      const labels = ["Command","Control","Clarity","Connection"];
+      const keys = ["command","control","clarity","connection"];
+      ctx.fillStyle = "rgba(255,255,255,.70)";
+      ctx.font = "600 13px " + getComputedStyle(document.documentElement).getPropertyValue("--sans");
+
+      for(let i=0;i<4;i++){
+        const ang = -Math.PI/2 + i*(Math.PI/2);
+        const lx = cx + Math.cos(ang)*(r+34);
+        const ly = cy + Math.sin(ang)*(r+34);
+        ctx.textAlign = (i===1) ? "left" : (i===3) ? "right" : "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(labels[i], lx, ly);
+      }
+
+      // Data shape
+      const pts = [];
+      for(let i=0;i<4;i++){
+        const v = clamp(pct[keys[i]]/100, 0, 1);
+        const ang = -Math.PI/2 + i*(Math.PI/2);
+        pts.push([cx + Math.cos(ang)*(r*v), cy + Math.sin(ang)*(r*v)]);
+      }
+
+      // Fill
+      ctx.beginPath();
+      pts.forEach((p, idx) => {
+        if(idx===0) ctx.moveTo(p[0], p[1]);
+        else ctx.lineTo(p[0], p[1]);
+      });
+      ctx.closePath();
+      ctx.fillStyle = "rgba(255,138,0,.22)";
+      ctx.fill();
+      ctx.strokeStyle = "rgba(255,138,0,.95)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Points
+      ctx.fillStyle = "rgba(255,138,0,.95)";
+      pts.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p[0], p[1], 4, 0, Math.PI*2);
+        ctx.fill();
+      });
+    }
+
+    function polygon(ctx, cx, cy, r, sides, rotation, fill){
+      ctx.beginPath();
+      for(let i=0;i<sides;i++){
+        const a = rotation + i*(Math.PI*2/sides);
+        const x = cx + Math.cos(a)*r;
+        const y = cy + Math.sin(a)*r;
+        if(i===0) ctx.moveTo(x,y);
+        else ctx.lineTo(x,y);
+      }
+      ctx.closePath();
+      if(fill) ctx.fill();
+      ctx.stroke();
+    }
+
+    // ============================================================
+    // Export + Summary
+    // ============================================================
+    let LAST_PROFILE = null;
+    let LAST_EXPORT = null;
+
+    function buildExport(profile, name, date){
       return {
         generated_at: new Date().toISOString(),
-        date_display: fmtDate(),
+        date_display: date,
+        name: name || null,
         balance_score: profile.balance,
         spread: profile.spread,
-        energies: {
-          command: profile.scores.command,
-          control: profile.scores.control,
-          clarity: profile.scores.clarity,
-          connection: profile.scores.connection
-        },
+        energies_pct: profile.pct,
         ranking: {
           dominant: profile.primary,
           secondary: profile.secondary,
           underused: profile.underused
         },
-        leadership_approach: (function(){
-          var ap = buildApproachBlock(profile);
-          return { title: ap.title, desc: ap.desc, hint: ap.hint };
-        })(),
-        answers: answersObj
+        leadership_approach: {
+          mode: profile.mode,
+          label: profile.approach.label,
+          focus: profile.approach.focus || null,
+          watchout: profile.approach.watch || null,
+          build: profile.approach.build || null
+        },
+        answers: Object.fromEntries(Object.entries(answers).map(([k,v]) => [k, v]))
       };
     }
 
-    function buildPlan(profile){
-      var under = profile.underused;
-      var uNice = niceLabel(under);
-
-      // Simple 4-week experiments by underused energy
-      var experiments = {
-        command: [
-          "Make one clear decision earlier than you normally would, and state it plainly.",
-          "Have one direct conversation you’ve been avoiding. Keep it respectful and short.",
-          "Set one clear boundary this week (time, scope, or standard) and hold it.",
-          "In one meeting, name the decision needed and ask for input, then decide."
-        ],
-        control: [
-          "Create one simple weekly rhythm: priorities, progress, blockers, next step (15 minutes).",
-          "Clarify roles for one project: owner, deadline, definition of done.",
-          "Replace “keep an eye on it” with one clear measure and a check-in date.",
-          "Blend your dominant with Control: choose one leadership moment and add structure."
-        ],
-        clarity: [
-          "Write a one-sentence ‘why’ for a current priority and share it.",
-          "Ask one person: “What’s unclear?” then clarify the next step.",
-          "Turn a fuzzy goal into one clear outcome and one measure.",
-          "Blend your dominant with Clarity: name the purpose before the plan."
-        ],
-        connection: [
-          "Start one meeting with a genuine check-in: “What’s on your mind?”",
-          "Ask one person: “What do you need from me to do your best work?”",
-          "Name one feeling in the room (gently) and invite honesty.",
-          "Blend your dominant with Connection: keep the ask, add warmth and listening."
-        ]
-      };
-
-      var prompts = {
-        command: "Where did I avoid being direct, and what did it cost?",
-        control: "Where did I add structure that helped, and where did I over-control?",
-        clarity: "Where did I create focus and direction, and where did I over-explain?",
-        connection: "Where did I build trust, and where did I avoid necessary clarity?"
-      };
-
-      var wk = experiments[under] || experiments.control;
-      var prompt = prompts[under] || prompts.control;
-
-      var html = "";
-      html += '<div class="plan">';
-      html +=   '<h4>Week-by-week</h4>';
-      html +=   '<ul class="clean">';
-      html +=     '<li><strong>Week 1:</strong> '+escapeHtml(wk[0])+'</li>';
-      html +=     '<li><strong>Week 2:</strong> '+escapeHtml(wk[1])+'</li>';
-      html +=     '<li><strong>Week 3:</strong> '+escapeHtml(wk[2])+'</li>';
-      html +=     '<li><strong>Week 4:</strong> '+escapeHtml(wk[3])+'</li>';
-      html +=   '</ul>';
-      html +=   '<p class="subtle" style="margin-top:10px;"><strong>Weekly reflection question:</strong> '+escapeHtml(prompt)+'</p>';
-      html +=   '<p class="subtle" style="margin-top:10px;"><strong>Coach Approach tip:</strong> Keep it small. One behaviour. One situation. One week. Consistency beats intensity.</p>';
-      html += '</div>';
-      return html;
+    function summaryText(profile){
+      const nice = titleCase;
+      const name = (document.getElementById("name").value || "").trim();
+      const line1 = `${name ? name + " – " : ""}Leadership Profile Summary`;
+      const line2 = `Dominant: ${nice(profile.primary)}. Secondary: ${nice(profile.secondary)}. Underused: ${nice(profile.underused)}.`;
+      const line3 = `Balance score: ${profile.balance}/100. Leadership Approach: ${profile.approach.label}${profile.mode==="named" ? " ("+profile.approach.focus+")" : ""}.`;
+      const line4 = `Next step: practise your underused energy in one small moment this week.`;
+      return [line1, line2, line3, line4].join("\n");
     }
 
-    function setLists(profile){
-      // Default to dominant energy for best/watchouts
-      var dom = profile.primary;
-      var domNice = niceLabel(dom);
-
-      bestTitle.textContent = domNice + " at your best";
-      watchTitle.textContent = domNice + " watchouts";
-
-      bestList.innerHTML = "";
-      content[dom].best.forEach(function(t){
-        var li = document.createElement("li");
-        li.textContent = t;
-        bestList.appendChild(li);
-      });
-
-      watchList.innerHTML = "";
-      content[dom].watch.forEach(function(t){
-        var li = document.createElement("li");
-        li.textContent = t;
-        watchList.appendChild(li);
-      });
-    }
-
-    function setPressure(profile){
-      var dom = profile.primary;
-      var und = profile.underused;
-      pressureText.textContent = content[dom].pressure;
-      resetNote.innerHTML = "<strong>" + escapeHtml(content[dom].reset.split(":")[0]) + ":</strong>" + escapeHtml(content[dom].reset.split(":").slice(1).join(":"));
-      coachMove.textContent = content[dom].coach.move;
-
-      mindset.textContent = content[dom].coach.mindset;
-      toolset.textContent = content[dom].coach.toolset;
-      skillset.textContent = content[dom].coach.skillset;
-      underusedPractice.textContent = "Underused energy practice: Build " + niceLabel(und) + " with one small behaviour change this week. You don’t need a personality transplant. You need a practical habit.";
-    }
-
-    function renderReport(profile, answersObj){
-      // Meta
-      if(reportMeta){
-        reportMeta.textContent = "Date: " + fmtDate() + " · Balance score: " + profile.balance + "/100";
+    function copySummary(){
+      if(!LAST_PROFILE) return;
+      const txt = summaryText(LAST_PROFILE);
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).catch(()=>{});
+      } else {
+        // Fallback
+        prompt("Copy summary:", txt);
       }
-      if(headline){
-        headline.innerHTML = buildHeadline(profile);
-      }
-
-      // Snapshot bars + radar
-      setBars(profile.scores);
-      drawRadar(profile.scores);
-
-      // Snapshot note
-      if(balanceNote){
-        if(profile.balance >= BALANCE_THRESHOLD || profile.spread <= SPREAD_BALANCED_MAX){
-          balanceNote.textContent = "Balance note: your energies are relatively even. That usually means flexibility. Your next step is to choose the right energy more consciously, rather than automatically.";
-        }else{
-          balanceNote.textContent = "Balance note: you have clearer preferences. That can be a strength. Your growth edge is to deliberately practise your underused energy in real moments.";
-        }
-      }
-
-      // Lists + pressure + plan
-      setLists(profile);
-      setPressure(profile);
-
-      // Leadership Approach (shown inside guidance via coachMove block)
-      var ap = buildApproachBlock(profile);
-      coachMove.innerHTML = ap.title + ". " + ap.desc;
-
-      plan.innerHTML = buildPlan(profile);
-
-      // Capture name (optional)
-      var capName = document.getElementById("capName");
-      if(capName){
-        var nm = document.getElementById("name") ? document.getElementById("name").value.trim() : "";
-        capName.textContent = nm ? (nm + " · ") : "";
-      }
-
-      // Show report
-      if(report) report.style.display = "block";
-      scrollToReport();
-
-      // Buttons
-      wireButtons(profile, answersObj);
     }
 
-    function resetAll(){
-      answers = {};
-      answeredCount = 0;
-      updateProgress();
-      if(report) report.style.display = "none";
-      // Clear selections
-      var all = document.querySelectorAll(".opt.selected");
-      all.forEach(function(o){ o.classList.remove("selected"); o.setAttribute("aria-pressed","false"); });
-      showOk("Reset complete.");
-    }
+    function exportResults(){
+      if(!LAST_EXPORT) return;
 
-    function scrollToReport(){
+      const json = JSON.stringify(LAST_EXPORT, null, 2);
+
+      // Try download
       try{
-        document.getElementById("report").scrollIntoView({behavior:"smooth", block:"start"});
-      }catch(e){}
-    }
-
-    function copySummary(profile){
-      var ap = buildApproachBlock(profile);
-      var dom = niceLabel(profile.primary);
-      var sec = niceLabel(profile.secondary);
-      var und = niceLabel(profile.underused);
-
-      var s = "";
-      s += "Leadership Profile Snapshot\n";
-      s += "Date: " + fmtDate() + "\n";
-      s += "Balance score: " + profile.balance + "/100\n\n";
-      s += "Dominant: " + dom + " (" + profile.scores[profile.primary] + "%)\n";
-      s += "Secondary: " + sec + " (" + profile.scores[profile.secondary] + "%)\n";
-      s += "Underused: " + und + " (" + profile.scores[profile.underused] + "%)\n\n";
-      s += ap.title + "\n";
-      s += ap.desc.replace(/<[^>]*>/g,"") + "\n";
-      s += "Tip: " + ap.hint.replace(/<[^>]*>/g,"") + "\n\n";
-      s += "Coach Approach guidance\n";
-      s += "Mindset: " + mindset.textContent + "\n";
-      s += "Toolset: " + toolset.textContent + "\n";
-      s += "Skillset: " + skillset.textContent + "\n";
-      return s;
-    }
-
-    function wireButtons(profile, answersObj){
-      if(printBtn){
-        printBtn.onclick = function(){
-          openPrintView();
-        };
-      }
-
-      if(copyBtn){
-        copyBtn.onclick = function(){
-          var txt = copySummary(profile);
-          try{
-            if(navigator.clipboard && navigator.clipboard.writeText){
-              navigator.clipboard.writeText(txt).then(function(){
-                showOk("Summary copied.");
-              }).catch(function(){
-                showError("Couldn’t copy automatically. Try again, or copy manually.");
-              });
-            }else{
-              showError("Clipboard not available. Copy manually from the report.");
-            }
-          }catch(ex){
-            showError("Couldn’t copy automatically. Try again, or copy manually.");
-          }
-        };
-      }
-
-      if(downloadBtn){
-        downloadBtn.onclick = function(){
-          downloadJson(buildExportObject(profile, answersObj));
-        };
-      }
-    }
-
-    function downloadJson(obj){
-      try{
-        var json = JSON.stringify(obj, null, 2);
-
-        var overlay = document.getElementById("exportModal");
-        var ta = document.getElementById("exportText");
-        if(!overlay || !ta){
-          // Last resort: open a new tab
-          var w = window.open("", "_blank", "noopener");
-          if(!w){ showError("Export is blocked by your browser. Please allow pop-ups, then try again."); return; }
-          w.document.open();
-          w.document.write("<pre style='white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;'>" + json.replace(/</g,"&lt;") + "</pre>");
-          w.document.close();
-          return;
-        }
-
-        ta.value = json;
-        overlay.style.display = "flex";
-
-        // Copy button
-        var doCopy = function(){
-          if(navigator.clipboard && navigator.clipboard.writeText){
-            navigator.clipboard.writeText(json).then(function(){
-              showOk("Copied. Paste it somewhere safe.");
-            }).catch(function(){
-              // Fallback copy
-              ta.focus();
-              ta.select();
-              try{ document.execCommand("copy"); showOk("Copied. Paste it somewhere safe."); }
-              catch(e){ showError("Couldn’t copy automatically. You can still select and copy manually."); }
-            });
-          }else{
-            ta.focus();
-            ta.select();
-            try{ document.execCommand("copy"); showOk("Copied. Paste it somewhere safe."); }
-            catch(e){ showError("Couldn’t copy automatically. You can still select and copy manually."); }
-          }
-        };
-
-        var copyBtn = document.getElementById("exportCopy");
-        var closeBtn = document.getElementById("exportClose");
-        var doneBtn = document.getElementById("exportDone");
-
-        if(copyBtn){ copyBtn.onclick = function(e){ e.preventDefault(); doCopy(); }; }
-
-        var close = function(e){
-          if(e) e.preventDefault();
-          overlay.style.display = "none";
-        };
-        if(closeBtn){ closeBtn.onclick = close; }
-        if(doneBtn){ doneBtn.onclick = close; }
-        overlay.onclick = function(e){
-          if(e.target === overlay) close(e);
-        };
-
-      }catch(e){
-        showError("Sorry, export failed. Try again after publishing, or use a different browser.");
-        console.error(e);
-      }
-    }
-
-    function openPrintView(){
-      // Print the report only, in a clean new window.
-      var reportEl = document.getElementById("report");
-      if(!reportEl) return;
-
-      var w = window.open("", "_blank", "noopener");
-      if(!w){
-        // Fallback: try printing the page
-        window.print();
+        const blob = new Blob([json], {type:"application/json;charset=utf-8"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "coach-approach-results.json";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url), 900);
         return;
-      }
+      }catch(e){}
 
-      var css = document.querySelector("style") ? document.querySelector("style").innerHTML : "";
+      // Fallback new tab
+      const w = window.open("", "_blank", "noopener");
+      if(!w){ return; }
       w.document.open();
-      w.document.write("<!doctype html><html><head><meta charset='utf-8'><title>Leadership Profile Report</title><style>"+css+"</style></head><body>");
-      w.document.write("<div class='wrap'><div class='card'>");
-      w.document.write(reportEl.outerHTML);
-      w.document.write("</div></div>");
-      w.document.write("</body></html>");
+      w.document.write(
+        "<!doctype html><html><head><meta charset='utf-8'><title>Export Results Data</title>" +
+        "<style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:18px;background:#071624;color:#fff}textarea{width:100%;height:80vh;font-family:" + "'" + "ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace" + "'" + ";font-size:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);color:#fff;padding:12px;}</style>" +
+        "</head><body><h2>Export Results Data</h2><p>Copy the data below. This is your results export.</p>" +
+        "<textarea readonly>" + json.replace(/</g,"&lt;") + "</textarea></body></html>"
+      );
       w.document.close();
-
-      setTimeout(function(){
-        try{ w.focus(); w.print(); }catch(e){}
-      }, 250);
     }
 
-    // =========================================================
-    // Init + build report
-    // =========================================================
-    renderQuestions();
-    updateProgress();
+    function wireReportButtons(){
+      const printTop = document.getElementById("printBtnTop");
+      const copyTop  = document.getElementById("copyBtnTop");
+      const expTop   = document.getElementById("exportBtnTop");
+      const printBottom = document.getElementById("printBtnBottom");
+      const copyBottom  = document.getElementById("copyBtnBottom");
+      const expBottom   = document.getElementById("exportBtnBottom");
 
-    buildBtn.addEventListener("click", function(){
+      if(printTop) printTop.onclick = () => window.print();
+      if(printBottom) printBottom.onclick = () => window.print();
+      if(copyTop) copyTop.onclick = () => copySummary();
+      if(copyBottom) copyBottom.onclick = () => copySummary();
+      if(expTop) expTop.onclick = () => exportResults();
+      if(expBottom) expBottom.onclick = () => exportResults();
+    }
+
+    // ============================================================
+    // Helpers
+    // ============================================================
+    function renderList(id, items){
+      const ul = document.getElementById(id);
+      ul.innerHTML = "";
+      items.forEach(t=>{
+        const li = document.createElement("li");
+        li.textContent = t;
+        ul.appendChild(li);
+      });
+    }
+
+    function setBar(label, pct){
+      const map = {
+        Command: ["barCommand","pctCommand"],
+        Control: ["barControl","pctControl"],
+        Clarity: ["barClarity","pctClarity"],
+        Connection: ["barConnection","pctConnection"]
+      };
+      const [barId, pctId] = map[label];
+      document.getElementById(barId).style.width = pct + "%";
+      document.getElementById(pctId).textContent = pct + "%";
+    }
+
+    function clamp(n,min,max){ return Math.max(min, Math.min(max, n)); }
+    function titleCase(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[m]));
+    }
+
+    // ============================================================
+    // Events
+    // ============================================================
+    const buildBtn = document.getElementById("build");
+    const buildBtn2 = document.getElementById("build2");
+    const warnEl = document.getElementById("warn");
+
+    function attemptBuild(){
       if(Object.keys(answers).length !== QUESTIONS.length){
         warnEl.style.display = "block";
-        showError("Please answer all questions first.");
+        warnEl.scrollIntoView({behavior:"smooth", block:"center"});
         return;
       }
-
       warnEl.style.display = "none";
-var profile = calcScores();
+      const profile = calcProfile();
+      renderReport(profile);
+    }
 
-// ✅ Store for export
-LAST_PROFILE = profile;
-LAST_ANSWERS = answers;
+    buildBtn.addEventListener("click", attemptBuild);
+    buildBtn2.addEventListener("click", attemptBuild);
 
-renderReport(profile, answers);
-showOk("Report generated.");
+    document.getElementById("jumpReport").addEventListener("click", () => {
+      document.getElementById("report").scrollIntoView({behavior:"smooth"});
     });
 
-    // Back to top / report anchors
-    var backTop = document.getElementById("backTop");
-    if(backTop){
-      backTop.addEventListener("click", function(e){
-        e.preventDefault();
-        document.getElementById("app").scrollIntoView({behavior:"smooth"});
-      });
-    }
+    document.getElementById("backTop").addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("app").scrollIntoView({behavior:"smooth"});
+    });
 
-    var jumpToReport = document.getElementById("jumpToReport");
-    if(jumpToReport){
-      jumpToReport.addEventListener("click", function(e){
-        e.preventDefault();
-        document.getElementById("app").scrollIntoView({behavior:"smooth"});
-      });
-    }
-    // Bottom action buttons
-var printBottom = document.getElementById("printBottom");
-if (printBottom) {
-  printBottom.addEventListener("click", function () {
-    window.print();
-  });
-}
+    document.getElementById("reset").addEventListener("click", () => {
+      // clear answers + radios
+      for(const k of Object.keys(answers)) delete answers[k];
+      document.querySelectorAll("input[type=radio]").forEach(i => i.checked = false);
+      updateProgress();
+      document.getElementById("report").style.display = "none";
+      document.getElementById("jumpReport").style.display = "none";
+      warnEl.style.display = "none";
+      LAST_PROFILE = null;
+      LAST_EXPORT = null;
+      document.getElementById("app").scrollIntoView({behavior:"smooth"});
+    });
 
-var exportBottom = document.getElementById("exportBottom");
-if (exportBottom) {
-  exportBottom.addEventListener("click", function () {
-    var modal = document.getElementById("exportModal");
-    if (modal) modal.style.display = "flex";
-  });
-}
+    // Init
+    renderQuestions();
+    updateProgress();
   </script>
 </body>
 </html>
