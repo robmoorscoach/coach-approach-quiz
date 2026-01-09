@@ -629,6 +629,9 @@
   <div class="toast" id="toast"></div>
 
   <script>
+        // Store latest generated results for export
+var LAST_PROFILE = null;
+var LAST_ANSWERS = null;
         // =========================================================
     // Data + scoring
     // =========================================================
@@ -1453,9 +1456,14 @@
       }
 
       warnEl.style.display = "none";
-      var profile = calcScores();
-      renderReport(profile, answers);
-      showOk("Report generated.");
+var profile = calcScores();
+
+// ✅ Store for export
+LAST_PROFILE = profile;
+LAST_ANSWERS = answers;
+
+renderReport(profile, answers);
+showOk("Report generated.");
     });
 
     // Back to top / report anchors
