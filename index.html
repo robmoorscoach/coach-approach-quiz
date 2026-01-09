@@ -465,6 +465,18 @@
 
     /* Sticky “tiny scroll” fix: allow natural scroll */
     body{overflow-y:auto}
+
+    /* Ensure the report spans full width of the page grid */
+#report, .report, #reportWrap {
+  grid-column: 1 / -1 !important;
+}
+
+/* If a parent wrapper is forcing a column width, this prevents shrink */
+#report {
+  width: 100%;
+  max-width: 100%;
+}
+    
   </style>
 </head>
 
