@@ -1130,6 +1130,110 @@ else if (isTensionPair) {
       };
     }
 
+    function setLeadershipApproach(profile){
+  // Show the block
+  const block = document.getElementById("leadershipApproachBlock");
+  if(block) block.style.display = "block";
+
+  // Safety: make sure the placeholders exist
+  const pillEl = document.getElementById("approachPill");
+  const focusPillEl = document.getElementById("focusPill");
+  const focusEl = document.getElementById("approachFocus");
+  const watchEl = document.getElementById("approachWatchout");
+  const tipEl = document.getElementById("approachTip");
+  const noteEl = document.getElementById("approachBalanceNote");
+  const lineEl = document.getElementById("leadershipApproachLine");
+
+  if(!pillEl || !focusEl || !watchEl || !tipEl){
+    console.log("Leadership Approach placeholders missing in HTML.");
+    return;
+  }
+
+  // Helper
+  const cap = (s) => s ? (s.charAt(0).toUpperCase() + s.slice(1)) : s;
+
+  // Work out the top two energies in a stable way
+  const ranked = [...ENERGIES].sort((a,b) => profile.pct[b] - profile.pct[a]);
+  const p1 = ranked[0];
+  const p2 = ranked[1];
+
+  // Pair key (sorted so Control+Command matches Command+Control etc.)
+  const pairKey = [p1, p2].sort().join("|");
+
+  // Your named pairs (only when it’s a real pair)
+  const NAMED = {
+    "command|control":   { label:"Manage Results", focus:"Results",     watch:"If you over-control, you’ll reduce ownership and slow decisions.", tip:"Make space for ownership: ask one question before you direct." },
+    "command|clarity":   { label:"Inspire Purpose", focus:"Purpose",     watch:"If you stay in inspiration too long, you can lose grip on delivery.", tip:"Translate purpose into one priority and one next step." },
+    "clarity|connection":{ label:"Lead People",     focus:"People",      watch:"If you over-focus on people, you can avoid hard standards or outcomes.", tip:"Name the standard clearly, then listen properly." },
+    "connection|control":{ label:"Guide Performance",focus:"Performance",watch:"If you over-support, you may carry too much and create dependency.", tip:"Hold the line with warmth: clarify roles, check progress, coach the next step." }
+  };
+
+  // Balance / tension logic (your Option B)
+  // We treat a profile as “balanced” if the balance score is 70+ (you said yes)
+  const isBalanced = (profile.balance >= 70);
+
+  // “Opposite” pairs (tension pairs)
+  const isOpposite = (pairKey === "command|connection" || pairKey === "clarity|control");
+
+  // Decide the approach label + copy
+  let approach = null;
+
+  if(NAMED[pairKey]){
+    // Named approach
+    approach = {
+      label: NAMED[pairKey].label,
+      focus: NAMED[pairKey].focus,
+      watch: NAMED[pairKey].watch,
+      tip: NAMED[pairKey].tip,
+      mode: "named"
+    };
+  } else {
+    // Not a real pair: Flexible Balance (if balanced) else Tension Pair
+    if(isBalanced){
+      approach = {
+        label: "Flexible Balance",
+        focus: "Choice",
+        watch: "A balanced profile can drift into autopilot because you can flex without noticing you’re switching.",
+        tip: "Name the energy you’re choosing, then choose one small behaviour that proves it.",
+        mode: "flex"
+      };
+    } else {
+      approach = {
+        label: "Tension Pair",
+        focus: isOpposite ? "Hold the tension" : "Blend with intent",
+        watch: isOpposite
+          ? "Your top two energies pull in different directions. That can show up as over-correcting or switching styles fast."
+          : "Your top two energies don’t naturally ‘pair’. Under pressure you may default to your strongest and neglect the other.",
+        tip: isOpposite
+          ? "Slow down. Name the shift. Choose one clear anchor (purpose or standards) before you act."
+          : "Pick one moment this week to use your second energy on purpose, not as an afterthought.",
+        mode: "tension"
+      };
+    }
+  }
+
+  // Fill the UI
+  pillEl.textContent = approach.label;
+  if(focusPillEl) focusPillEl.textContent = cap(p1) + " + " + cap(p2);
+
+  if(lineEl){
+    lineEl.textContent = `Top energies: ${cap(p1)} + ${cap(p2)} • Approach: ${approach.label}`;
+  }
+
+  focusEl.textContent = approach.focus;
+  watchEl.textContent = approach.watch;
+  tipEl.textContent = approach.tip;
+
+  if(noteEl){
+    noteEl.textContent = isOpposite
+      ? "Balance note: your top energies pull in different directions. If that feels true, treat it as a signal to slow down, name the shift, and choose one clear anchor (purpose or standards)."
+      : (isBalanced
+          ? "Balance note: your energies are relatively even. That usually means flexibility. Your next step is choosing the right energy more consciously, rather than automatically."
+          : "Balance note: your profile has a clear preference. That’s a strength. Your growth edge is practising the missing energy deliberately in specific situations."
+        );
+  }
+}
+
     function buildPlan(profile){
       const p = profile.primary;
       const under = titleCase(profile.underused);
