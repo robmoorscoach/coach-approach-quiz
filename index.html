@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Coach Approach™ Leadership Profile</title>
+
+<style>
+:root{
+  --navy:#071b2f;
+  --navy2:#0b2a46;
+  --ice:#dbeafe;
+  --slate:#94a3b8;
+  --orange:#ff7a19;
+  --card:rgba(255,255,255,0.06);
+  --border:rgba(148,163,184,0.25);
+  --border-soft:rgba(148,163,184,0.18);
+  --radius:18px;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:#ffffff;
+  color:#0b1220;
+}
+
+.wrap{
+  max-width:1120px;
+  margin:24px auto;
+  padding:18px;
+  border-radius:22px;
+  background:linear-gradient(180deg,var(--navy2),var(--navy));
+  color:var(--ice);
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.brand{
+  max-width:700px;
+}
+
+.badge{
+  display:inline-block;
+  background:rgba(255,122,25,.18);
+  border:1px solid rgba(255,122,25,.55);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+h1{
+  margin:0;
+  font-size:40px;
+  line-height:1.05;
+}
+
+.lede{
+  margin-top:10px;
+  font-size:15px;
+  line-height:1.5;
+  color:rgba(219,234,254,.85);
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:flex-start;
+}
+
+button{
+  border-radius:999px;
+  padding:10px 14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  color:var(--ice);
+  font-weight:800;
+  cursor:pointer;
+}
+
+button.primary{
+  border-color:rgba(255,122,25,.55);
+  background:rgba(255,122,25,.18);
+}
+
+.meta{
+  margin-top:14px;
+  padding:14px;
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border-soft);
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-width:260px;
+}
+
+.field label{
+  font-size:12px;
+  font-weight:700;
+  color:rgba(219,234,254,.75);
+}
+
+.field input{
+  height:44px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.2);
+  color:var(--ice);
+  padding:0 12px;
+  font-weight:700;
+}
+
+.pill{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  font-size:12px;
+  font-weight:800;
+  color:rgba(219,234,254,.9);
+  background:rgba(255,255,255,.03);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
+  margin-top:16px;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
