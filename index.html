@@ -658,7 +658,13 @@
                 Choose one behaviour to practise deliberately for the next 30 days.
                 Keep it small, observable, and realistic.
               </p>
-              <div class="callout" id="experimentText"></div>
+              <div class="callout">
+  <p id="experimentIntro"></p>
+
+  <ul id="experimentSteps" style="margin:10px 0 0; padding-left:18px; line-height:1.6;"></ul>
+
+  <p class="mini" id="experimentReflection" style="margin-top:10px;"></p>
+</div>
             </div>
 
           </div>
@@ -1343,15 +1349,51 @@
   }
 
   // --------- Premium: pick experiment text based on underused energy ----------
-  function experimentFor(underKey){
-    const map = {
-      command: "For 30 days, practise one clean, kind challenge per week. Keep it small and specific. Example: “Can I be direct about the standard we need, and ask what support would help you meet it?”",
-      control: "For 30 days, practise a lighter structure. Choose one recurring meeting and end it with: “What’s the next step, who owns it, and by when?” Then stop. No extra process.",
-      clarity: "For 30 days, practise ‘one message leadership’. In every important conversation, name one priority, one reason it matters, and one next step.",
-      connection: "For 30 days, practise 2 minutes of real listening before solving. Ask: “What’s the real issue?” then reflect back what you heard before you respond."
-    };
-    return map[underKey] || map.connection;
-  }
+function experimentFor(underKey){
+  const map = {
+    command: {
+      intro: "For the next 30 days, practise clean, kind challenge without urgency.",
+      steps: [
+        "Name the standard clearly, without softening or pushing.",
+        "Ask one question that invites ownership, not defence.",
+        "Agree one next step and who owns it."
+      ],
+      reflect: "Reflection prompt: Where did I choose clarity over comfort this week?"
+    },
+
+    control: {
+      intro: "For the next 30 days, practise lighter structure without losing standards.",
+      steps: [
+        "End one recurring conversation with a single agreed next step.",
+        "Name ownership out loud instead of adding more process.",
+        "Resist the urge to tighten control when things feel messy."
+      ],
+      reflect: "Reflection prompt: Where did I trust people instead of the process?"
+    },
+
+    clarity: {
+      intro: "For the next 30 days, practise ‘one-message leadership’.",
+      steps: [
+        "Name one priority in every important conversation.",
+        "Explain why it matters in one sentence.",
+        "Agree one clear next step before closing."
+      ],
+      reflect: "Reflection prompt: Where did clarity create momentum this week?"
+    },
+
+    connection: {
+      intro: "For the next 30 days, practise presence before problem-solving.",
+      steps: [
+        "Ask one genuine question before offering a view.",
+        "Reflect back what you heard, without fixing.",
+        "Only move to action once the other person feels heard."
+      ],
+      reflect: "Reflection prompt: Where did listening change the outcome?"
+    }
+  };
+
+  return map[underKey] || map.connection;
+}
 
   // --------- Generate full report ----------
   function generateReport(){
@@ -1438,7 +1480,14 @@
         }`;
 
       // 30-day experiment
-      $("experimentText").textContent = experimentFor(under);
+      const exp = experimentFor(under);
+
+$("experimentIntro").textContent = exp.intro;
+
+$("experimentSteps").innerHTML =
+  exp.steps.map(s => `<li>${escapeHtml(s)}</li>`).join("");
+
+$("experimentReflection").textContent = exp.reflect;
 
       // Scroll to report
       $("report").scrollIntoView({ behavior:"smooth", block:"start" });
