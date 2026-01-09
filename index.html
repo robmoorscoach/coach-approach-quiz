@@ -492,6 +492,10 @@
       .orange{ color:#000; }
       canvas{ height:220px; }
     }
+    /* When snapshot is hidden, make the layout single-column */
+.grid.single{
+  grid-template-columns: 1fr !important;
+}
   </style>
 </head>
 
@@ -1423,6 +1427,9 @@ function experimentFor(underKey){
       // Show Snapshot + Report
       $("snapshotPanel").style.display = "block";
       $("report").style.display = "block";
+      
+      const grid = document.querySelector(".grid");
+      if(grid) grid.classList.remove("single");
 
       // Snapshot bars
       setBar("bar-command","val-command", pct.command);
@@ -1574,6 +1581,10 @@ $("experimentReflection").textContent = exp.reflect;
 
   // --------- Wire buttons ----------
   function wire(){
+    // Start in single-column mode (snapshot hidden)
+    const grid = document.querySelector(".grid");
+    if(grid) grid.classList.add("single");
+    
     // Render questions
     renderQuestions();
 
