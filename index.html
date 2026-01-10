@@ -1423,9 +1423,6 @@ function experimentFor(underKey){
       // Show Snapshot + Report
       $("snapshotPanel").style.display = "block";
       $("report").style.display = "block";
-      
-      const grid = document.querySelector(".grid");
-      if(grid) grid.classList.remove("single");
 
       // Snapshot bars
       setBar("bar-command","val-command", pct.command);
