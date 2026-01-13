@@ -264,11 +264,11 @@
     }
 
     .scale{
-      display:grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      align-items: stretch;
-    }
+  display:grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  align-items: stretch;
+}
 
     .opt{
       border: 1px solid var(--stroke);
@@ -601,6 +601,12 @@ html, body{
   .scaleRow button, .optionsRow button, .answersRow button, .likertRow button{
     min-width: 0 !important;
     width: 100%;
+  }
+}
+
+    @media (max-width: 520px){
+  .opt{
+    min-width: 0 !important;
   }
 }
     
