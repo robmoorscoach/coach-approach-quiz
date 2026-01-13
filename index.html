@@ -555,6 +555,54 @@ html, body { max-width: 100%; overflow-x: hidden; }
   /* make sure anything “wide” can’t force overflow */
   canvas, svg, img { max-width: 100%; height: auto; }
 }
+
+    /* --- Mobile width fix (prevents right-side cut-off) --- */
+html, body{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*, *:before, *:after{
+  box-sizing: border-box;
+}
+
+/* Ensure your outer containers never exceed the viewport */
+.wrap, .shell{
+  width: 100%;
+  max-width: 100%;
+}
+
+/* If you have any containers using fixed widths, this neutralises them on mobile */
+@media (max-width: 520px){
+  .shell{
+    margin: 0;
+    border-radius: 0;
+  }
+
+  /* The most common culprit: answer buttons having min-width */
+  button{
+    max-width: 100%;
+  }
+
+  /* If your options row uses flex, allow it to shrink/wrap */
+  .scaleRow, .optionsRow, .answersRow, .likertRow{
+    flex-wrap: wrap;
+  }
+
+  /* If your options row uses grid, force it to fit the screen */
+  .scaleRow, .optionsRow, .answersRow, .likertRow{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* And remove any minimum button width so columns can actually shrink */
+  .scaleRow button, .optionsRow button, .answersRow button, .likertRow button{
+    min-width: 0 !important;
+    width: 100%;
+  }
+}
     
   </style>
 </head>
