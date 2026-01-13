@@ -520,6 +520,41 @@ img, svg, canvas, iframe{
 .reportGrid{
   max-width:100%;
 }
+
+    /* --- Mobile fix: stop horizontal overflow + stack the top bar --- */
+html, body { max-width: 100%; overflow-x: hidden; }
+* { box-sizing: border-box; }
+
+.shell, .wrap { width: 100%; max-width: 100%; }
+
+@media (max-width: 700px){
+  .topbar{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .brand{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .titleBlock{
+    width: 100%;
+    min-width: 0;
+  }
+
+  .actions{
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* make sure anything “wide” can’t force overflow */
+  canvas, svg, img { max-width: 100%; height: auto; }
+}
     
   </style>
 </head>
