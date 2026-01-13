@@ -1133,6 +1133,20 @@
     // - Else if balance >= 70 => Flexible Balance
     // - Else => Tension Pair
     function getLeadershipApproach(topKey, secondKey, balanceScore){
+
+        // Balanced / tie override
+        // If energies are extremely even, don't force a pair
+        if (balanceScore >= 90) {
+          return {
+            type: "adaptive",
+            label: "Adaptive",
+            focus: "Choosing the energy that fits the moment, not the habit.",
+            desc: "Your energies are highly balanced. Rather than a fixed style, your strength is adapting deliberately to what the situation and the person in front of you need.",
+            watch: "Defaulting to speed or comfort instead of making a conscious choice.",
+            build: "Pause and name the energy you are choosing before you act."
+          };
+        }
+      
       const a = [topKey, secondKey].sort().join("|"); // sorted for lookup
       const hit = approachMap[a];
 
