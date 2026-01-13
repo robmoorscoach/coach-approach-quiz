@@ -603,6 +603,7 @@
       <span class="chip" id="sumSecondary"></span>
       <span class="chip" id="sumUnder"></span>
       <span class="chip" id="sumApproach"></span>
+      <span class="chip" id="sumReady"></span>
       <span class="chip" id="sumBalance"></span>
     </div>
 
@@ -1106,6 +1107,15 @@
       return clamp(balance, 0, 100);
     }
 
+    function isCoachApproachReady(pct){
+      return (
+      pct.command >= 60 &&
+      pct.control >= 60 &&
+      pct.clarity >= 60 &&
+      pct.connection >= 60
+    );
+  }
+
     // Determine top, second, underused
     function rankEnergies(pcts){
       const entries = Object.keys(pcts).map(k => ({ k, v: pcts[k] }));
@@ -1438,6 +1448,7 @@ function experimentFor(underKey){
       const dominant = ranked.top.k;
       const secondary = ranked.second.k;
       const under = ranked.under.k;
+      const ready = isCoachApproachReady(pct);
 
       // Show Snapshot + Report
       $("snapshotPanel").style.display = "block";
@@ -1481,6 +1492,9 @@ function experimentFor(underKey){
       $("sumSecondary").textContent = `Secondary: ${ENERGY_LABEL[secondary]} · ${pct[secondary]}%`;
       $("sumUnder").textContent     = `Underused: ${ENERGY_LABEL[under]} · ${pct[under]}%`;
       $("sumApproach").textContent  = `Approach: ${approach.label}`;
+      $("sumReady").textContent = ready
+        ? "🔶 The Coach Approach: Ready"
+         : "Range to build";
       $("sumBalance").textContent   = `Balance: ${balance}/100`;
 
       // One line that nudges them towards a conversation with you, without being salesy
