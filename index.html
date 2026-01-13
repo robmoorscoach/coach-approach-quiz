@@ -1497,6 +1497,10 @@ function experimentFor(underKey){
          : "Range to build";
       $("sumBalance").textContent   = `Balance: ${balance}/100`;
 
+      console.log("READY FLAG =", ready);
+      console.log("SUMREADY EL =", document.getElementById("sumReady"));
+      console.log("SUMREADY TEXT =", document.getElementById("sumReady")?.textContent);
+
       // One line that nudges them towards a conversation with you, without being salesy
       $("summaryLine").textContent =
         `This report isn’t a label. It’s a mirror. Your edge is choosing your energy on purpose, not by habit.`;
