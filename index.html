@@ -492,6 +492,35 @@
 .grid.single{
   grid-template-columns: 1fr !important;
 }
+
+    /* When snapshot is hidden, make the layout single-column */
+.grid.single{
+  grid-template-columns: 1fr !important;
+}
+
+/* --- Mobile safety rails (prevents horizontal clipping) --- */
+html, body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+*, *::before, *::after{
+  box-sizing:border-box;
+}
+
+img, svg, canvas, iframe{
+  max-width:100%;
+  height:auto;
+}
+
+.panel,
+.wrap,
+.shell,
+.reportGrid{
+  max-width:100%;
+}
+    
   </style>
 </head>
 
