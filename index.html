@@ -594,6 +594,21 @@
         <!-- REPORT (hidden until submit) -->
         <div id="report">
 
+            <div class="panel" id="reportSummary" style="margin-bottom:14px;">
+              <h2 style="margin-bottom:6px;">Your summary</h2>
+                <p class="subhead" id="summaryLine" style="margin-bottom:12px;"></p>
+
+    <div class="quizMetaRow" style="margin-top:0;">
+      <span class="chip" id="sumDominant"></span>
+      <span class="chip" id="sumSecondary"></span>
+      <span class="chip" id="sumUnder"></span>
+      <span class="chip" id="sumApproach"></span>
+      <span class="chip" id="sumBalance"></span>
+    </div>
+
+    <div class="callout" id="bringToSession" style="margin-top:12px;"></div>
+  </div>
+
           <div class="reportGrid">
 
             <!-- Energy map -->
@@ -1456,6 +1471,25 @@ function experimentFor(underKey){
 
       // Leadership Approach logic (named vs flexible vs tension)
       const approach = getLeadershipApproach(dominant, secondary, balance);
+
+            // --- Summary strip (new) ---
+      $("sumDominant").textContent  = `Dominant: ${ENERGY_LABEL[dominant]} (${pct[dominant]}%)`;
+      $("sumSecondary").textContent = `Secondary: ${ENERGY_LABEL[secondary]} (${pct[secondary]}%)`;
+      $("sumUnder").textContent     = `Underused: ${ENERGY_LABEL[under]} (${pct[under]}%)`;
+      $("sumApproach").textContent  = `Approach: ${approach.label}`;
+      $("sumBalance").textContent   = `Balance: ${balance}/100`;
+
+      // One line that nudges them towards a conversation with you, without being salesy
+      $("summaryLine").textContent =
+        `This report isn’t a label. It’s a mirror. Your edge is choosing your energy on purpose, not by habit.`;
+
+      // Bring-to-session box (coach-like CTA)
+      $("bringToSession").innerHTML = `
+        <strong>Bring this to a conversation with Rob:</strong><br>
+        1) Where am I leaning too hard on my dominant energy?<br>
+        2) What would “one notch more” of my underused energy look like this week?<br>
+        3) What’s the one conversation or decision I’m avoiding?
+      `;
 
       $("approachPill").textContent = approach.label;
       $("focusPill").textContent = `Focus: ${approach.focus}`;
