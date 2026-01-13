@@ -712,7 +712,6 @@ html, body{
 <!-- REPORT (hidden until submit) -->
 <div id="report">
 
-  <!-- Summary (full width) -->
   <div class="panel" id="reportSummary" style="margin-bottom:14px;">
     <h2 style="margin-bottom:6px;">Your summary</h2>
     <p class="subhead" id="summaryLine" style="margin-bottom:12px;"></p>
@@ -729,7 +728,6 @@ html, body{
     <div class="callout" id="bringToSession" style="margin-top:12px;"></div>
   </div>
 
-  <!-- Two-column report grid -->
   <div class="reportGrid">
 
     <!-- Energy map -->
@@ -767,7 +765,7 @@ html, body{
       </div>
     </div>
 
-    <!-- Leadership approach (full width) -->
+    <!-- Leadership approach -->
     <div class="panel" id="leadershipApproachBlock" style="grid-column: 1 / -1;">
       <h2>Your Leadership Approach</h2>
 
@@ -787,7 +785,7 @@ html, body{
       <p class="mini" id="approachBalanceNote"></p>
     </div>
 
-    <!-- 30 day experiment (full width) -->
+    <!-- 30 day experiment -->
     <div class="panel" style="grid-column: 1 / -1;">
       <h2>30-day experiment</h2>
       <p class="subhead">
@@ -808,7 +806,9 @@ html, body{
     <button class="btnGhost" id="printBtn">Print / Save as PDF</button>
     <button class="btnGhost" id="exportBtn">Export results data</button>
 
-    <a class="linkBtn" href="https://robmoors.com/contact-me" target="_blank" rel="noopener">
+    <a class="linkBtn"
+       href="https://robmoors.com/contact-me"
+       target="_blank" rel="noopener">
       Contact Rob
     </a>
 
@@ -818,114 +818,14 @@ html, body{
       Tip: Printing works best when this report is opened in a new tab.
     </p>
 
-    <a class="btnGhost" href="https://robmoorscoach.github.io/coach-approach-quiz/" target="_blank" rel="noopener">
+    <a class="btnGhost"
+       href="https://robmoorscoach.github.io/coach-approach-quiz/"
+       target="_blank" rel="noopener">
       Open full page
     </a>
   </div>
 
 </div> <!-- end #report -->
-
-            <!-- Energy map -->
-            <div class="panel">
-              <h2>Energy Map</h2>
-              <p class="subhead">
-                This map shows how your leadership energy is distributed across four core modes.
-              </p>
-              <div class="radarWrap">
-                <canvas id="radar"></canvas>
-              </div>
-            </div>
-
-            <!-- Best of you -->
-            <div class="panel">
-              <h2>At your best</h2>
-              <p class="subhead" id="bestText"></p>
-              <div class="callout" id="bestCallout"></div>
-            </div>
-
-            <!-- Under pressure -->
-            <div class="panel">
-              <h2>Under pressure</h2>
-              <p class="subhead" id="pressureText"></p>
-              <div class="callout" id="resetRoutine"></div>
-            </div>
-
-            <!-- Coach guidance -->
-            <div class="panel">
-              <h2>Your Coach Approach guidance</h2>
-              <div class="coachBox">
-                <p><strong>Focus on:</strong> <span id="coachFocus"></span></p>
-                <p><strong>Watch out for:</strong> <span id="coachWatch"></span></p>
-                <p><strong>Build this by:</strong> <span id="coachBuild"></span></p>
-              </div>
-            </div>
-
-            <!-- Leadership approach -->
-            <div class="panel" id="leadershipApproachBlock" style="grid-column: 1 / -1;">
-              <h2>Your Leadership Approach</h2>
-
-              <div class="pillRow">
-                <span class="pill" id="approachPill"></span>
-                <span class="pill" id="focusPill"></span>
-              </div>
-
-              <p class="subhead" id="leadershipApproachLine"></p>
-
-              <div class="coachBox">
-                <p><strong>Primary focus:</strong> <span id="approachFocus"></span></p>
-                <p><strong>Watch out for:</strong> <span id="approachWatchout"></span></p>
-                <p><strong>Coach tip:</strong> <span id="approachTip"></span></p>
-              </div>
-
-              <p class="mini" id="approachBalanceNote"></p>
-            </div>
-
-            <!-- 30 day experiment -->
-            <div class="panel" style="grid-column: 1 / -1;">
-              <h2>30-day experiment</h2>
-              <p class="subhead">
-                Choose one behaviour to practise deliberately for the next 30 days.
-                Keep it small, observable, and realistic.
-              </p>
-              <div class="callout">
-  <p id="experimentIntro"></p>
-
-  <ul id="experimentSteps" style="margin:10px 0 0; padding-left:18px; line-height:1.6;"></ul>
-
-  <p class="mini" id="experimentReflection" style="margin-top:10px;"></p>
-</div>
-            </div>
-
-          </div>
-
-          <!-- Export actions -->
-        <div class="footerActions">
-  <button class="btnGhost" id="printBtn">Print / Save as PDF</button>
-
-
-
-  <button class="btnGhost" id="exportBtn">Export results data</button>
-
-  <a class="linkBtn"
-     href="https://robmoors.com/contact-me"
-     target="_blank" rel="noopener">
-    Contact Rob
-  </a>
-
-  <div class="spacer"></div>
-
-  <p class="mini" style="margin-top:6px; flex-basis:100%;">
-    Tip: Printing works best when this report is opened in a new tab.
-  </p>
-
-            <a class="btnGhost"
-     href="https://robmoorscoach.github.io/coach-approach-quiz/"
-     target="_blank" rel="noopener">
-    Open full page
-  </a>
-          
-</div>
-          </div> <!-- end #report -->
         </div>
       </div>
     </div>
