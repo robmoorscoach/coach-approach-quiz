@@ -1478,9 +1478,9 @@ function experimentFor(underKey){
       const approach = getLeadershipApproach(dominant, secondary, balance);
 
             // --- Summary strip (new) ---
-      $("sumDominant").textContent  = `Dominant: ${ENERGY_LABEL[dominant]} (${pct[dominant]}%)`;
-      $("sumSecondary").textContent = `Secondary: ${ENERGY_LABEL[secondary]} (${pct[secondary]}%)`;
-      $("sumUnder").textContent     = `Underused: ${ENERGY_LABEL[under]} (${pct[under]}%)`;
+      $("sumDominant").textContent  = `Dominant: ${ENERGY_LABEL[dominant]} · ${pct[dominant]}%`;
+      $("sumSecondary").textContent = `Secondary: ${ENERGY_LABEL[secondary]} · ${pct[secondary]}%`;
+      $("sumUnder").textContent     = `Underused: ${ENERGY_LABEL[under]} · ${pct[under]}%`;
       $("sumApproach").textContent  = `Approach: ${approach.label}`;
       $("sumBalance").textContent   = `Balance: ${balance}/100`;
 
