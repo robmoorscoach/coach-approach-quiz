@@ -133,9 +133,16 @@
       user-select:none;
     }
 
-    button:hover, .linkBtn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.22);
+    button:disabled{
+  opacity: .45;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
+  button:not(:disabled):hover, .linkBtn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.22);
     }
 
     button:active, .linkBtn:active{ transform: translateY(0); }
