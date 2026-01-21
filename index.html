@@ -90,7 +90,7 @@
     .titleBlock{
       display:flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       min-width:0;
     }
 
@@ -625,10 +625,11 @@ html, body{
           <div class="titleBlock">
             <h1 class="h1">Leadership Profile</h1>
             <p class="meta">A reflective leadership survey. Your report is generated locally in your browser.</p>
+            <p class="mini">Takes about 4 minutes · Progress saved locally · Nothing is uploaded</p>
           </div>
         </div>
         <div class="actions">
-          <button class="btnOrange" id="submitTop">Submit answers</button>
+          <button class="btnOrange" id="submitTop" disabled>Submit answers</button>
         </div>
       </div>
 
@@ -660,8 +661,9 @@ html, body{
 
             <!-- Bottom submit -->
             <div class="footerActions">
-              <button class="btnOrange" id="submitBottom">Submit answers</button>
+              <button class="btnOrange" id="submitBottom" disabled>Submit answers</button>
               <div class="spacer"></div>
+              <button class="btnGhost" id="resetBtn" type="button">Reset answers</button>
             </div>
 
             <!-- Generate state -->
@@ -1345,6 +1347,44 @@ html, body{
   // - Close script/body/html tags
   // ============================================================
 
+    // ============================================================
+  // IMPORTANT: Chunk 3 created some helper functions and data.
+  // ============================================================
+
+  // ---------- Save/Resume (local only) ----------
+  const STORAGE_KEY = "tca_leadership_profile_v1";
+
+  function saveAnswers(){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+    }catch(e){}
+  }
+
+  function loadAnswers(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      const parsed = JSON.parse(raw);
+      if(parsed && typeof parsed === "object"){
+        for(const k in parsed){
+          const id = parseInt(k, 10);
+          const v = parseInt(parsed[k], 10);
+          if(Number.isFinite(id) && Number.isFinite(v) && v >= 1 && v <= 5){
+            answers[id] = v;
+          }
+        }
+      }
+    }catch(e){}
+  }
+
+  function clearAnswers(){
+    try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+    for(const q of QUESTIONS) delete answers[q.id];
+  }
+
+  // --------- Replace/override renderQuestions to match Chunk 1 CSS ----------
+  function renderQuestions(){
+  
   // --------- Replace/override renderQuestions to match Chunk 1 CSS ----------
   function renderQuestions(){
     const host = $("questions");
@@ -1390,6 +1430,8 @@ html, body{
       const v = parseInt(el.value, 10);
       if(!Number.isFinite(qid) || !Number.isFinite(v)) return;
       answers[qid] = v;
+      saveAnswers();
+      updateCompletionUI();
       // Hide warning as soon as they resume answering
       $("warn").style.display = "none";
     }, { passive:true });
@@ -1779,12 +1821,21 @@ $("experimentReflection").textContent = exp.reflect;
     if(grid) grid.classList.add("single");
     
     // Render questions
+    loadAnswers();
     renderQuestions();
+    updateCompletionUI();
 
     // Submit buttons
     $("submitTop").addEventListener("click", generateReport);
     $("submitBottom").addEventListener("click", generateReport);
 
+    // ⬇️ ADD RESET HERE ⬇️
+    $("resetBtn")?.addEventListener("click", () => {
+    if (!confirm("Reset all answers and start again?")) return;
+    clearAnswers();
+    location.reload();
+    });
+    
     // Print
     $("printBtn").addEventListener("click", () => window.print());
 
