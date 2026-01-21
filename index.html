@@ -1816,36 +1816,30 @@ $("experimentReflection").textContent = exp.reflect;
   // --------- Wire buttons ----------
 
   // Enable/disable Submit buttons based on completion
-    function updateCompletionUI(){
-    const done = answeredCount();
-    const total = QUESTIONS.length;
+   function updateCompletionUI(){
+  const done = answeredCount();
+  const total = QUESTIONS.length;
   const ok = done === total;
 
   const topBtn = $("submitTop");
   const bottomBtn = $("submitBottom");
 
-  // Hard-set disabled (attribute + property) so the browser respects it
   [topBtn, bottomBtn].forEach(btn => {
     if(!btn) return;
-    if(ok){
-      btn.disabled = false;
-      btn.removeAttribute("disabled");
-      btn.setAttribute("aria-disabled", "false");
-    } else {
-      btn.disabled = true;
-      btn.setAttribute("disabled", "");
-      btn.setAttribute("aria-disabled", "true");
-    }
+    btn.disabled = !ok;
+    btn.setAttribute("aria-disabled", String(!ok));
   });
 
-  // Update progress text if it exists
   const progress = $("progressText");
-  if(progress) progress.textContent = `${done} / ${total} answered`;
-
-  // Keep the warning hidden while they’re still answering
-  const warn = $("warn");
-  if(warn && !ok) warn.style.display = "none";
+  if(progress){
+    progress.textContent = `${done} / ${total} answered`;
   }
+
+  const warn = $("warn");
+  if(warn){
+    warn.style.display = "none";
+  }
+}
   
   function wire(){
     // Start in single-column mode (snapshot hidden)
