@@ -651,6 +651,8 @@ html, body{
               <span class="chip">No right or wrong answers</span>
             </div>
 
+            <p class="mini" id="progressText" style="margin-top:10px;">0 / 40 answered</p>
+
             <!-- Questions -->
             <div class="qList" id="questions"></div>
 
@@ -1814,20 +1816,36 @@ $("experimentReflection").textContent = exp.reflect;
   // --------- Wire buttons ----------
 
   // Enable/disable Submit buttons based on completion
-  function updateCompletionUI(){
-  const done = answeredCount();
-  const total = QUESTIONS.length;
+    function updateCompletionUI(){
+    const done = answeredCount();
+    const total = QUESTIONS.length;
   const ok = done === total;
 
   const topBtn = $("submitTop");
   const bottomBtn = $("submitBottom");
 
-  if(topBtn) topBtn.disabled = !ok;
-  if(bottomBtn) bottomBtn.disabled = !ok;
+  // Hard-set disabled (attribute + property) so the browser respects it
+  [topBtn, bottomBtn].forEach(btn => {
+    if(!btn) return;
+    if(ok){
+      btn.disabled = false;
+      btn.removeAttribute("disabled");
+      btn.setAttribute("aria-disabled", "false");
+    } else {
+      btn.disabled = true;
+      btn.setAttribute("disabled", "");
+      btn.setAttribute("aria-disabled", "true");
+    }
+  });
 
-  // If they’re still answering, keep the warning hidden
+  // Update progress text if it exists
+  const progress = $("progressText");
+  if(progress) progress.textContent = `${done} / ${total} answered`;
+
+  // Keep the warning hidden while they’re still answering
   const warn = $("warn");
-  if(warn && done < total) warn.style.display = "none";
+  if(warn && !ok) warn.style.display = "none";
+}(warn && done < total) warn.style.display = "none";
   }
   
   function wire(){
@@ -1841,8 +1859,23 @@ $("experimentReflection").textContent = exp.reflect;
     updateCompletionUI();
 
     // Submit buttons
-    $("submitTop").addEventListener("click", generateReport);
-    $("submitBottom").addEventListener("click", generateReport);
+$("submitTop").addEventListener("click", (e) => {
+  if(!allAnswered()){
+    e.preventDefault();
+    $("warn").style.display = "block";
+    return;
+  }
+  generateReport();
+});
+
+$("submitBottom").addEventListener("click", (e) => {
+  if(!allAnswered()){
+    e.preventDefault();
+    $("warn").style.display = "block";
+    return;
+  }
+  generateReport();
+});
 
     // ⬇️ ADD RESET HERE ⬇️
     $("resetBtn")?.addEventListener("click", () => {
