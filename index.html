@@ -1812,6 +1812,24 @@ $("experimentReflection").textContent = exp.reflect;
   }
 
   // --------- Wire buttons ----------
+
+  // Enable/disable Submit buttons based on completion
+  function updateCompletionUI(){
+  const done = answeredCount();
+  const total = QUESTIONS.length;
+  const ok = done === total;
+
+  const topBtn = $("submitTop");
+  const bottomBtn = $("submitBottom");
+
+  if(topBtn) topBtn.disabled = !ok;
+  if(bottomBtn) bottomBtn.disabled = !ok;
+
+  // If they’re still answering, keep the warning hidden
+  const warn = $("warn");
+  if(warn && done < total) warn.style.display = "none";
+  }
+  
   function wire(){
     // Start in single-column mode (snapshot hidden)
     const grid = document.querySelector(".grid");
